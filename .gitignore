@@ -22,3 +22,4 @@ config/initializers/secret_token.rb
 .ruby-gemset
 .ruby-version
 config/database.yml
+config/initializers/dev_config.rb
