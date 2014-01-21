@@ -1,0 +1,21 @@
+= simple_form_for([:admin, @prototype]) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    .line.line-dashed.line-lg.pull-in
+    .form-group
+      %label.col-sm-2.control-label{ for: 'property_ids' }
+        property
+      .col-sm-10
+        = select_tag "prototype[property_ids]", options_from_collection_for_select(Property.all, "id", "name", @prototype.property_ids), multiple: true, class: 'col-xs-12 m-n no-padder'
+    .line.line-dashed.line-lg.pull-in
+    .form-group
+      %label.col-sm-2.control-label{ for: 'property_ids' }
+        option type
+      .col-sm-10
+        = select_tag "prototype[option_type_ids]", options_from_collection_for_select(OptionType.all, "id", "name", @prototype.option_type_ids), multiple: true, class: 'col-xs-12 m-n no-padder'
+  .form-group
+    .col-sm-4.col-sm-offset-2
+      = link_to "Cancel", admin_prototypes_path, class: 'btn btn-default'
+      = f.button :submit, class: 'btn btn-primary'

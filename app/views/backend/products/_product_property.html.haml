@@ -1,0 +1,9 @@
+.nested-fields
+  .form-inputs
+    = f.input :name
+    = f.input :value
+
+  .form-group
+    .col-sm-4.col-sm-offset-2
+      = link_to_remove_association "remove property", f, class: 'btn btn-danger'
+  .line.line-dashed.line-lg.pull-in

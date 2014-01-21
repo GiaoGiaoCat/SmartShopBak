@@ -1,0 +1,39 @@
+%section.vbox
+  %section.scrollable.padder
+    = render_breadcrumb
+
+    %section.panel.panel-default
+      %header.panel-heading.font-bold Listing properties
+      .table-responsive
+        %table.table.table-striped.b-t.b-light.text-sm
+          %thead
+            %tr
+              %th Name
+              %th Presentation
+              %th.col-lg-action
+
+          %tbody
+            - @properties.each do |property|
+              %tr
+                %td= property.name
+                %td= property.presentation
+                %td.col-lg-action
+                  = link_to admin_property_path(property), class: 'btn btn-default btn-xs' do
+                    %i.fa.fa-file-text.text-muted
+                    Show
+                  = link_to edit_admin_property_path(property), class: 'btn btn-default btn-xs' do
+                    %i.fa.fa-pencil.text-muted
+                    Edit
+                  = link_to admin_property_path(property), method: :delete, class: 'btn btn-danger btn-xs', :data => { confirm: 'Are you sure?', dismiss: 'alert' } do
+                    %i.fa.fa-trash-o
+                    Remove
+
+
+      %footer.panel-footer
+        .row
+          .col-sm-4.hidden-xs
+            = link_to 'New Property', new_admin_property_path, class: 'btn btn-s-md btn-info btn-rounded'
+          .col-sm-4.text-center
+            %small.text-muted.inline.m-t-sm.m-b-sm showing 20-30 of 50 items
+          .col-sm-4.text-right.text-center-xs
+            = paginate @properties

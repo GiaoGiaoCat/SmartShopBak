@@ -1,0 +1,6 @@
+$("#product_option_values_hash").prev(".line").remove();
+$("#product_option_values_hash").remove();
+<% unless @prototype.option_types.size.zero? %>
+  $("#property_ids").after("<%= j render(partial: 'option_types', locals: { option_types: @prototype.option_types}) %>");
+  $('.fuelux-checkbox').checkbox()
+<% end %>

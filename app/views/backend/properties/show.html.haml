@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @property.name
+%p
+  %b Presentation:
+  = @property.presentation
+
+= link_to 'Edit', edit_admin_property_path(@property)
+\|
+= link_to 'Back', admin_properties_path

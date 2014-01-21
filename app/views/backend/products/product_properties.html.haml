@@ -1,0 +1,17 @@
+%section.vbox
+  %section.scrollable.padder
+    = render_breadcrumb
+
+    .row
+      .col-lg-9
+        %section.panel.panel-default
+          %header.panel-heading.font-bold Editing product
+          .panel-body
+            = simple_form_for([:admin, @product]) do |f|
+              = render :partial => "product_properties", :locals => { :f => f }
+              %footer.panel-footer.text-right.bg-light.lter
+                = link_to "Cancel", admin_products_path, class: 'btn btn-default'
+                = f.button :submit, class: 'btn btn-primary'
+
+      .col-lg-3
+        = render "side_nav"

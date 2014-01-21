@@ -1,0 +1,22 @@
+= simple_form_for([:admin, @address]) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    .line.line-dashed.line-lg.pull-in
+    = f.input :phone
+    .line.line-dashed.line-lg.pull-in
+    = f.input :province
+    .line.line-dashed.line-lg.pull-in
+    = f.input :city
+    .line.line-dashed.line-lg.pull-in
+    = f.input :district
+    .line.line-dashed.line-lg.pull-in
+    = f.input :address
+    .line.line-dashed.line-lg.pull-in
+    = f.input :zipcode
+    .line.line-dashed.line-lg.pull-in
+  .form-group
+    .col-sm-4.col-sm-offset-2
+      = link_to "Cancel", admin_orders_path, class: 'btn btn-default'
+      = f.button :submit, class: 'btn btn-primary'

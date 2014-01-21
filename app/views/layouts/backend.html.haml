@@ -1,0 +1,26 @@
+!!!
+%html(lang="en" class="app")
+  %head
+    %meta(charset="utf-8")
+    %title SmartShop
+    %meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1")
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    /[if lt IE 9]
+      = javascript_include_tag "ie/html5shiv.js", cache: false
+      = javascript_include_tag "ie/respond.min.js", cache: false
+      = javascript_include_tag "ie/excanvas.js", cache: false
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+
+  %body
+    %section.vbox
+      = render "application/header"
+      %section
+        %section.hbox.stretch
+          = render "application/navigation"
+          %section#content
+            .loading-indicator= image_tag "preloaders.gif"
+            = yield
+            = link_to '', "#", class: 'hide nav-off-screen-block', data: { target: '#nav' }
+          %aside.bg-light.lter.b-l.aside-md.hide#notes
+            .wrapper Notification

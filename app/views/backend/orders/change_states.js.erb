@@ -1,0 +1,9 @@
+$("#flash_msg").css("display", "none");
+$("#flash_msg").html("<%= j render(partial: 'application/flash_message') %>").slideDown();
+<% @orders.each do |order| %>
+  dom = $("#<%= dom_id(order) %>");
+  dom.before("<%= j render(partial: 'order', object: order) %>");
+  dom.remove();
+  $("#<%= dom_id(order) %>").find("span.label").fadeOut().fadeIn().fadeOut().fadeIn();
+<% end %>
+setTimeout( function(){ $("#flash_msg .alert").slideUp() }, 5000 );

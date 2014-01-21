@@ -1,0 +1,18 @@
+%section.panel.panel-default
+  %header.panel-heading.font-bold= @product.sku
+  #product_sidenav.list-group.bg-white
+    = link_to_unless_current_page edit_admin_product_path(@product), class: 'list-group-item', current_class: 'bg-primary' do
+      %i.fa.fa-pencil-square-o.fa-fw
+      PRODUCT DETAILS
+    = link_to '#', class: 'list-group-item' do
+      %span.badge 0
+      %i.fa.fa-picture-o.icon-muted.fa-fw
+      IMAGES
+    = link_to_unless_current_page admin_product_variants_path(@product), class: 'list-group-item', current_class: 'bg-primary' do
+      %span.badge= @product.variants.count
+      %i.fa.fa-archive.icon-muted.fa-fw
+      VARIANTS
+    = link_to_unless_current_page product_properties_admin_product_path(@product), class: 'list-group-item', current_class: 'bg-primary' do
+      %span.badge= @product.properties.count
+      %i.fa.fa-puzzle-piece.icon-muted.fa-fw
+      PRODUCT PROPERTIES

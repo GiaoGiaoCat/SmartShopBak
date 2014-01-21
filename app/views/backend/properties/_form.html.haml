@@ -1,0 +1,12 @@
+= simple_form_for([:admin, @property]) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    .line.line-dashed.line-lg.pull-in
+    = f.input :presentation
+    .line.line-dashed.line-lg.pull-in
+  .form-group
+  .col-sm-4.col-sm-offset-2
+    = link_to "Cancel", admin_properties_path, class: 'btn btn-default'
+    = f.button :submit, class: 'btn btn-primary'

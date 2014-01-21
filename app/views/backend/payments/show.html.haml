@@ -1,0 +1,39 @@
+%p#notice= notice
+
+%p
+  %b Amount:
+  = @payment.amount
+%p
+  %b Order:
+  = @payment.order_id
+%p
+  %b Source:
+  = @payment.source_id
+%p
+  %b Source type:
+  = @payment.source_type
+%p
+  %b Payment method:
+  = @payment.payment_method_id
+%p
+  %b State:
+  = @payment.state
+%p
+  %b Response code:
+  = @payment.response_code
+%p
+  %b Avs response:
+  = @payment.avs_response
+%p
+  %b Identifier:
+  = @payment.identifier
+%p
+  %b Cvv response code:
+  = @payment.cvv_response_code
+%p
+  %b Cvv response message:
+  = @payment.cvv_response_message
+
+= link_to 'Edit', edit_admin_payment_path(@payment)
+\|
+= link_to 'Back', admin_payments_path

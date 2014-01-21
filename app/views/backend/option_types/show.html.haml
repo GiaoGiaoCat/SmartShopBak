@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @option_type.name
+%p
+  %b Presentation:
+  = @option_type.presentation
+%p
+  %b Position:
+  = @option_type.position
+
+= link_to 'Edit', edit_admin_option_type_path(@option_type)
+\|
+= link_to 'Back', admin_option_types_path

@@ -1,0 +1,12 @@
+%fieldset
+  %legend.wrapper-sm
+    %i.fa.fa-truck.text-muted.m-r-xs
+    Address
+  .form-inputs
+    = f.simple_fields_for :ship_address do |address|
+      = address.input :name
+      .line.line-dashed.line-lg.pull-in
+      = address.input :phone
+      .line.line-dashed.line-lg.pull-in
+      = address.input :address
+      .line.line-dashed.line-lg.pull-in

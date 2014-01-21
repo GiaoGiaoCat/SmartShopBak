@@ -1,0 +1,30 @@
+= simple_form_for([:admin, @payment]) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :amount
+    .line.line-dashed.line-lg.pull-in
+    = f.association :order
+    .line.line-dashed.line-lg.pull-in
+    = f.input :source_id
+    .line.line-dashed.line-lg.pull-in
+    = f.input :source_type
+    .line.line-dashed.line-lg.pull-in
+    = f.association :payment_method
+    .line.line-dashed.line-lg.pull-in
+    = f.input :state
+    .line.line-dashed.line-lg.pull-in
+    = f.input :response_code
+    .line.line-dashed.line-lg.pull-in
+    = f.input :avs_response
+    .line.line-dashed.line-lg.pull-in
+    = f.input :identifier
+    .line.line-dashed.line-lg.pull-in
+    = f.input :cvv_response_code
+    .line.line-dashed.line-lg.pull-in
+    = f.input :cvv_response_message
+    .line.line-dashed.line-lg.pull-in
+  .form-group
+    .col-sm-4.col-sm-offset-2
+      = link_to "Cancel", admin_payments_path, class: 'btn btn-default'
+      = f.button :submit, class: 'btn btn-primary'

@@ -1,0 +1,11 @@
+= simple_form_for([:admin, @shop]) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    .line.line-dashed.line-lg.pull-in
+
+  .form-group
+    .col-sm-4.col-sm-offset-2
+      = link_to "Cancel", admin_shops_path, class: 'btn btn-default'
+      = f.button :submit, class: 'btn btn-primary'

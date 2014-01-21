@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @shipping_category.name
+
+= link_to 'Edit', edit_admin_shipping_category_path(@shipping_category)
+\|
+= link_to 'Back', admin_shipping_categories_path

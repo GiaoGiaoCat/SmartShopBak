@@ -1,0 +1,11 @@
+%fieldset
+  %legend.wrapper-sm
+    %i.fa.fa-shopping-cart.text-muted.m-r-xs
+    Assets
+  #assets
+    = f.simple_fields_for :assets do |asset|
+      = render 'asset', :f => asset
+    .links
+      .form-group
+        .col-sm-4.col-sm-offset-2
+          = link_to_add_association 'add asset', f, :assets, partial: 'asset', class: 'btn btn-primary', "data-association-insertion-node" => "#assets .links"

@@ -1,0 +1,17 @@
+= simple_form_for([:admin, @shipping_method]) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    .line.line-dashed.line-lg.pull-in
+    = f.input :admin_name
+    .line.line-dashed.line-lg.pull-in
+    = f.input :display_on, collection: ShippingMethod::DISPLAY.collect { |display| [t(display), display == :both ? nil : display.to_s] }
+    .line.line-dashed.line-lg.pull-in
+    = f.input :shipping_category_ids, collection: ShippingCategory.all, as: :check_boxes
+    / = f.collection_check_boxes :shipping_category_ids, ShippingCategory.all, :id, :name
+    .line.line-dashed.line-lg.pull-in
+  .form-group
+    .col-sm-4.col-sm-offset-2
+      = link_to "Cancel", admin_shipping_methods_path, class: 'btn btn-default'
+      = f.button :submit, class: 'btn btn-primary'

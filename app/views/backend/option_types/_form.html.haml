@@ -1,0 +1,17 @@
+= simple_form_for([:admin, @option_type]) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    .line.line-dashed.line-lg.pull-in
+    = f.input :presentation
+    .line.line-dashed.line-lg.pull-in
+    = f.input :position
+    .line.line-dashed.line-lg.pull-in
+
+  = render :partial => "option_values", :locals => { :f => f }
+
+  .form-group
+    .col-sm-4.col-sm-offset-2
+      = link_to "Cancel", admin_option_types_path, class: 'btn btn-default'
+      = f.button :submit, class: 'btn btn-primary'

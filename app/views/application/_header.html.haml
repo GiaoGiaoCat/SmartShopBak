@@ -1,0 +1,100 @@
+%header.bg-dark.dk.header.navbar.navbar-fixed-top-xs
+  .navbar-header.aside-md
+    = link_to "javascript:void(0)", class: 'btn btn-link visible-xs', data: { toggle: "class:nav-off-screen", target: "#nav"} do
+      = content_tag(:i, nil, class: 'fa fa-bars')
+
+    = link_to "#", class: 'navbar-brand', data: { toggle: "fullscreen" } do
+      = image_tag("logo.png", class: 'm-r-sm') + "SmartShop"
+
+    = link_to "#", class: 'btn btn-link visible-xs', data: { toggle: "dropdown", target: ".nav-user" } do
+      = content_tag(:i, nil, class: 'fa fa-cog')
+
+  - if Rails.env.development?
+    %ul.nav.navbar-nav.hidden-xs
+      %li.dropdown
+        = link_to '#', class: 'dropdown-toggle dker', data: { toggle: 'dropdown' } do
+          = content_tag(:i, nil, class: 'fa fa-building-o')
+          = content_tag(:span, "Activity", class: 'font-bold')
+        %section.dropdown-menu.aside-xl.on.animated.fadeInLeft.no-borders.lt
+          .wrapper.lter.m-t-n-xs
+            = link_to '#', class: 'thumb pull-left m-r' do
+              = image_tag "avatar.jpg", class: "img-circle"
+            .clear
+              = link_to content_tag(:span, '@Delia Chen', class: 'text-white font-bold'), '#'
+              %small.block= "Art Director"
+              = link_to 'Upgrade', '#', class: 'btn btn-xs btn-success m-t-xs'
+          .row.m-l-none.m-r-none.m-b-n-xs.text-center
+            .col-xs-4
+              .padder-v
+                %span.m-b-xs.h4.block.text-white 245
+                %small.text-muted Followers
+            .col-xs-4.dk
+              .padder-v
+                %span.m-b-xs.h4.block.text-white 55
+                %small.text-muted Likes
+            .col-xs-4
+              .padder-v
+                %span.m-b-xs.h4.block.text-white 2,035
+                %small.text-muted Photos
+        %li
+          = link_to '#' do
+            = content_tag(:i, nil, class: 'fa fa-mobile')
+            = content_tag(:span, "Site", class: 'font-bold')
+  %ul.nav.navbar-nav.navbar-right.hidden-xs.nav-user
+    - if Rails.env.development?
+      %li.hidden-xs
+        = link_to '#', class: 'dropdown-toggle dk', data: { toggle: 'dropdown' } do
+          = content_tag(:i, nil, class: 'fa fa-bell')
+          = content_tag(:span, 2, class: 'badge badge-sm up bg-danger m-l-n-sm count')
+        %section.dropdown-menu.aside-xl
+          %section.panel.bg-white
+            %header.panel-heading.b-light.bg-light
+              %strong
+                = "You have #{content_tag(:span, '2', class: 'count')} notifications".html_safe
+            .list-group.list-group-alt.animated.fadeInRight
+              = link_to '#', class: 'media list-group-item' do
+                = content_tag(:span, class: 'pull-left thumb-sm') do
+                  = image_tag('avatar.jpg', class: 'img-circle', alt: 'John said')
+                = content_tag(:span, class: 'media-body block m-b-none') do
+                  Use awesome animate.css
+                  = tag("br")
+                  = content_tag(:small, '10 minutes ago', class: 'text-muted')
+            .list-group.list-group-alt.animated.fadeInRight
+              = link_to '#', class: 'media list-group-item' do
+                = content_tag(:span, class: 'media-body block m-b-none') do
+                  1.0 initial released
+                  = tag("br")
+                  = content_tag(:small, '1 hour ago', class: 'text-muted')
+            %footer.panel-footer.text-sm
+              = link_to content_tag(:i, nil, class: 'fa fa-cog'), '#', class: 'pull-right'
+              = link_to 'See all the notifications', '#notes', data: { toggle: 'class:show animated fadeInRight' }
+      %li.dropdown.hidden-xs
+        = link_to '#', class: 'dropdown-toggle dker', data: { toggle: 'dropdown' } do
+          = content_tag(:i, nil, class: 'fa fa-fw fa-search')
+        %section.dropdown-menu.aside-xl.animated.fadeInUp
+          %section.panel.bg-white
+            %form{role: 'search'}
+              .form-group.wrapper.m-b-none
+                .input-group
+                  = text_field_tag('search', nil, class: 'form-control', placeholder: 'Search')
+                  = content_tag(:span, class: 'input-group-btn') do
+                    = button_tag(type: 'submit', class: 'btn btn-info btn-icon') do
+                      = content_tag(:i, nil, class: 'fa fa-search')
+    %li.dropdown
+      = link_to '#', class: 'dropdown-toggle', data: { toggle: 'dropdown' } do
+        = content_tag(:span, class: 'thumb-sm avatar pull-left') do
+          = image_tag "avatar.jpg", class: "img-circle"
+        Delia Chen
+        = content_tag(:b, nil, class: 'caret')
+      %ul.dropdown-menu.animated.fadeInRight
+        - if Rails.env.development?
+          %span.arrow.top
+          %li= link_to 'Settings', '#'
+          %li= link_to 'Profile', '#'
+          %li
+            = link_to '#' do
+              = content_tag(:span, 3, class: 'badge bg-danger pull-right')
+              Notifications
+          %li= link_to 'Help', '#'
+          %li.divider
+        %li= link_to 'Logout', '#', data: { toggle: 'ajaxModal' }

@@ -1,0 +1,36 @@
+= simple_form_for([:admin, @product]) do |f|
+  = f.error_notification
+  = @product.errors.full_messages
+  %fieldset
+    %legend.wrapper-sm
+      %i.fa.fa-file-text.text-muted.m-r-xs
+      Product
+    .form-inputs
+      = f.input :name
+      .line.line-dashed.line-lg.pull-in
+      = f.input :description
+      .line.line-dashed.line-lg.pull-in
+      = f.input :available_on, as: :string, input_html: { class: 'input-sm input-s datepicker-input', value: @product.available_on, data: { "date-format" => "yyyy-mm-dd" } }
+      .line.line-dashed.line-lg.pull-in
+      / = f.input :deleted_at
+      = f.input :permalink
+      .line.line-dashed.line-lg.pull-in
+      = f.input :meta_description
+      .line.line-dashed.line-lg.pull-in
+      = f.input :meta_keywords
+      .line.line-dashed.line-lg.pull-in
+      = f.association :shipping_category, include_blank: false, wrapper_html: { class: nil }
+      .line.line-dashed.line-lg.pull-in
+      - if @product.new_record?
+        #property_ids.form-group
+          %label.col-sm-2.control-label{ for: 'property_ids' }
+            Prototype
+          .col-sm-10
+            = select_tag "product[prototype_id]", options_from_collection_for_select(Prototype.all, "id", "name"), multiple: false, class: 'select required form-control'
+        .line.line-dashed.line-lg.pull-in
+
+  = render :partial => "variants", :locals => { :f => f }
+  .form-group
+    .col-sm-4.col-sm-offset-2
+      = link_to "Cancel", admin_products_path, class: 'btn btn-default'
+      = f.button :submit, class: 'btn btn-primary'

@@ -1,0 +1,11 @@
+.nested-fields
+  .form-inputs
+    = select_product_tag(f.object)
+    = f.input :variant_id, as: :select, collection: [[f.object.id, f.object.variant_id]], input_html: { class: 'variant_selecter' }
+
+    = f.input :price, input_html: { class: 'price_input', readonly: true }
+    = f.input :quantity, input_html: { value: f.object.quantity || 1 }
+  .form-group
+    .col-sm-4.col-sm-offset-2
+      = link_to_remove_association "remove task", f, class: 'btn btn-danger'
+  .line.line-dashed.line-lg.pull-in

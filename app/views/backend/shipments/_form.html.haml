@@ -1,0 +1,23 @@
+= simple_form_for([:admin, @shipment]) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :tracking
+    .line.line-dashed.line-lg.pull-in
+    = f.input :number
+    .line.line-dashed.line-lg.pull-in
+    = f.input :cost
+    .line.line-dashed.line-lg.pull-in
+    = f.input :shipped_at, as: :string, input_html: { class: 'input-sm input-s datepicker-input', value: @shipment.shipped_at, data: { "date-format" => "yyyy-mm-dd" } }
+    .line.line-dashed.line-lg.pull-in
+    = f.association :order
+    .line.line-dashed.line-lg.pull-in
+    = f.association :address
+    .line.line-dashed.line-lg.pull-in
+    = f.input :state
+    .line.line-dashed.line-lg.pull-in
+
+  .form-group
+    .col-sm-4.col-sm-offset-2
+      = link_to "Cancel", admin_shipments_path, class: 'btn btn-default'
+      = f.button :submit, class: 'btn btn-primary'

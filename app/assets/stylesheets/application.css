@@ -1,0 +1,54 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+
+ * Core stylesheets do not remove
+ *= require bootstrap
+
+ * Plugins stylesheets
+ *= require animate
+ *= require font-awesome.min
+ *= require font
+ *= require select2/select2
+ *= require select2/theme
+ *= require fuelux/fuelux
+ *= require datepicker/datepicker
+ *= require slider/slider
+
+ *= require app
+
+ *= require_tree .
+ */
+
+
+/* custom css to fix theme bug */
+.form-group .show-field-value { padding-top: 7px; font-weight: 600; line-height: 1.42; }
+.label_error { color: #FF5F5F; margin-top: 6px; }
+.error .form-control { border-color: #FF5F5F !important; }
+button.close { font-size: 15px; }
+.form-horizontal legend { font-size: 13px; }
+.panel .table th.col-lg-action, .panel .table td.col-lg-action { width: 18%; padding-left: 0; padding-right: 0; }
+.nav > li > a:focus { background-color: rgba(0,0,0,0.05) !important; }
+.nav > li > a.dker:focus { background-color: #1B252E !important; }
+input[type=checkbox].form-control { width: auto; height: auto; display: inline; }
+/* fix .select bug with fuelux */
+div.select { display: block; }
+
+#content legend { font-size: 13px; }
+
+/* custom css */
+.loading-indicator {
+  z-index: 99;
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  display: none;
+}

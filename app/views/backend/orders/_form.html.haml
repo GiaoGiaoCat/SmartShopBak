@@ -1,0 +1,17 @@
+= simple_form_for([:admin, @order]) do |f|
+  = f.error_notification
+  = render :partial => "line_items", :locals => { :f => f }
+  %fieldset
+    %legend.wrapper-sm
+      %i.fa.fa-file-text.text-muted.m-r-xs
+      Order
+    .form-inputs
+      = f.input :shipping_method_id, as: :select, collection: ShippingMethod::METHODS
+      .line.line-dashed.line-lg.pull-in
+      = f.input :special_instructions
+      .line.line-dashed.line-lg.pull-in
+  = render :partial => "address", :locals => { :f => f }
+  .form-group
+    .col-sm-4.col-sm-offset-2
+      = link_to "Cancel", admin_orders_path, class: 'btn btn-default'
+      = f.button :submit, class: 'btn btn-primary'

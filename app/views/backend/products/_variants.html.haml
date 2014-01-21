@@ -1,0 +1,11 @@
+%fieldset
+  %legend.wrapper-sm
+    %i.fa.fa-shopping-cart.text-muted.m-r-xs
+    Variants
+  #variants
+    = f.simple_fields_for :variants do |variant|
+      = render 'variant', :f => variant
+    .links
+      .form-group
+        .col-sm-4.col-sm-offset-2
+          = link_to_add_association 'add variant', f, :variants, partial: 'variant', class: 'btn btn-primary', "data-association-insertion-node" => "#variants .links"

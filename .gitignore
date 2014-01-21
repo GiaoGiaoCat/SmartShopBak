@@ -17,3 +17,8 @@ rerun.txt
 pickle-email-*.html
 .project
 config/initializers/secret_token.rb
+
+# DEV
+.ruby-gemset
+.ruby-version
+config/database.yml

@@ -1,0 +1,29 @@
+%p#notice= notice
+
+%p
+  %b Number:
+  = @order.number
+%p
+  %b Item total:
+  = @order.item_total
+%p
+  %b Total:
+  = @order.total
+%p
+  %b State:
+  = @order.state
+%p
+  %b Completed at:
+  = @order.completed_at
+%p
+  %b Special instructions:
+  = @order.special_instructions
+
+%p
+  %b line item:
+  - @order.line_items.each do |item|
+    = item.variant.product.name
+
+= link_to 'Edit', edit_admin_order_path(@order)
+\|
+= link_to 'Back', admin_orders_path

@@ -1,0 +1,14 @@
+.nested-fields
+  .form-inputs
+    / = f.input :image, input_html: { class: 'filestyle input-s', data: { "icon" => 'false', "classButton" => 'btn btn-default', "classInput" => 'form-control inline input-s'} }
+    = f.input :image, input_html: { class: 'filestyle input-s'}
+    = f.hidden_field :image_cache
+  .form-group
+    .col-sm-4.col-sm-offset-2
+      = link_to_remove_association "remove assets", f, class: 'btn btn-danger'
+  .line.line-dashed.line-lg.pull-in
+  :coffee
+    $(":file").filestyle
+      icon: false
+      classButton: "btn btn-default"
+      classInput: "form-control inline input-s"

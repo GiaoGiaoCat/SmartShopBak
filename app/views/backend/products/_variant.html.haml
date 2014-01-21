@@ -1,0 +1,23 @@
+.nested-fields
+  .form-inputs
+    = f.input :sku
+    = f.input :cost_price
+    = hidden_field_tag "product[variants_attributes][#{f.index}][is_master]", 0
+    .form-group
+      %label.col-sm-2.control-label
+        Is Master
+      .col-sm-10
+        %label.switch
+          = check_box_tag "product[variants_attributes][#{f.index}][is_master]", 1, f.object.is_master, id: "product_variants_attributes_#{f.index}_is_master"
+          %span
+    = f.input :position
+    / = f.input :price
+    = f.simple_fields_for :prices do |price|
+      .nested-fields
+        .form-inputs
+          = price.input :price, label: "Price"
+
+  .form-group
+    .col-sm-4.col-sm-offset-2
+      = link_to_remove_association "remove task", f, class: 'btn btn-danger'
+  .line.line-dashed.line-lg.pull-in

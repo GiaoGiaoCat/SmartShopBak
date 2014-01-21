@@ -1,0 +1,80 @@
+%section.vbox
+  %section.scrollable.padder
+    = render_breadcrumb
+
+    .row
+      .col-lg-9
+        %section.panel.panel-default
+          %header.panel-heading.font-bold Editing product
+          .panel-body
+            = form_for([:admin, @product]) do |f|
+              = render 'application/error', model: @product
+              %fieldset
+                %legend.wrapper-sm
+                  %i.fa.fa-file-text.text-muted.m-r-xs
+                  Product
+                .form-inputs
+                  .form-group.pull-in.clearfix
+                    .col-sm-8
+                      %label
+                        %abbr(title = 'required') *
+                        Name
+                      = f.text_field :name, class: 'form-control'
+                    .col-sm-4
+                      %label
+                        %abbr(title = 'required') *
+                        Master Price
+                      = f.text_field :master_price, class: 'form-control', value: @product.price
+
+                  .form-group.pull-in.clearfix
+                    .col-sm-8
+                      %label
+                        %abbr(title = 'required') *
+                        Permalink
+                      = f.text_field :permalink, class: 'form-control'
+                    .col-sm-4
+                      %label
+                        %abbr(title = 'required') *
+                        Master Sku
+                      = f.text_field :master_sku, class: 'form-control', value: @product.sku
+                    / .col-sm-3
+                    / todo cost price
+                    / .col-sm-3
+                    / todo cost currency
+
+                  .form-group
+                    %label Description
+                    = f.text_area :description, class: 'form-control', rows: 4
+
+                  .form-group.pull-in.clearfix
+                    .col-sm-8
+                      %label Meta Keywords
+                      = f.text_field :meta_keywords, class: 'form-control'
+
+                    .col-sm-4
+                      %label Available On
+                      = f.text_field :available_on, class: 'form-control datepicker-input', value: @product.available_on, data: { "date-format" => "yyyy-mm-dd" }
+
+                  .form-group.pull-in.clearfix
+                    .col-sm-8
+                      %label Meta Description
+                      = f.text_field :meta_description, class: 'form-control'
+
+                    .col-sm-4
+                      %label Shipping Category
+                      = f.select :shipping_category_id, options_from_collection_for_select(ShippingCategory.all, "id", "name", @product.shipping_category_id), { include_blank: false }, { class: 'select required form-control' }
+
+
+                  - if @product.new_record?
+                    #property_ids.form-group
+                      %label.col-sm-2.control-label{ for: 'property_ids' }
+                        Prototype
+                      .col-sm-10
+                        = select_tag "product[prototype_id]", options_from_collection_for_select(Prototype.all, "id", "name"), multiple: false, class: 'select required form-control'
+
+                %footer.panel-footer.text-right.bg-light.lter
+                  = link_to "Cancel", admin_products_path, class: 'btn btn-default'
+                  = f.button :submit, class: 'btn btn-primary'
+
+      .col-lg-3
+        = render "side_nav"

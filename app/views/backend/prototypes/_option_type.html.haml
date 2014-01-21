@@ -1,0 +1,7 @@
+/ .checkbox
+/   %label.checkbox-custom
+/     = check_box_tag("option_types[]", option_type.id, true, class: 'fuelux-checkbox')
+/     %i.fa.fa-fw.fa-square-o
+/     = option_type.presentation
+%strong= option_type.presentation
+= render(partial: 'option_value', collection: option_type.option_values)

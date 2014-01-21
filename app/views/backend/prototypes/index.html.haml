@@ -1,0 +1,37 @@
+%section.vbox
+  %section.scrollable.padder
+    = render_breadcrumb
+
+    %section.panel.panel-default
+      %header.panel-heading.font-bold Listing prototypes
+      .table-responsive
+        %table.table.table-striped.b-t.b-light.text-sm
+          %thead
+            %tr
+              %th Name
+              %th.col-lg-action
+
+          %tbody
+            - @prototypes.each do |prototype|
+              %tr
+                %td= prototype.name
+                %td.col-lg-action
+                  = link_to admin_prototype_path(prototype), class: 'btn btn-default btn-xs' do
+                    %i.fa.fa-file-text.text-muted
+                    Show
+                  = link_to edit_admin_prototype_path(prototype), class: 'btn btn-default btn-xs' do
+                    %i.fa.fa-pencil.text-muted
+                    Edit
+                  = link_to admin_prototype_path(prototype), method: :delete, class: 'btn btn-danger btn-xs', :data => { confirm: 'Are you sure?', dismiss: 'alert' } do
+                    %i.fa.fa-trash-o
+                    Remove
+
+
+      %footer.panel-footer
+        .row
+          .col-sm-4.hidden-xs
+            = link_to 'New Prototype', new_admin_prototype_path, class: 'btn btn-s-md btn-info btn-rounded'
+          .col-sm-4.text-center
+            %small.text-muted.inline.m-t-sm.m-b-sm showing 20-30 of 50 items
+          .col-sm-4.text-right.text-center-xs
+            = paginate @prototypes

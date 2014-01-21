@@ -1,0 +1,39 @@
+%section.vbox
+  %section.scrollable.padder
+    = render_breadcrumb
+
+    .row
+      .col-lg-9
+        %section.panel.panel-default
+          %header.panel-heading.font-bold Listing variants
+          .table-responsive
+            %table.table.table-striped.b-t.b-light.text-sm
+              %thead
+                %tr
+                  %th Options
+                  %th Sku
+                  %th Price
+                  %th.col-lg-action
+
+              %tbody
+                - @variants.each do |variant|
+                  %tr
+                    %td= variant.options_text
+                    %td= variant.sku
+                    %td= variant.price
+                    %td.col-lg-action
+                      = link_to edit_admin_product_variant_path(@product, variant), class: 'btn btn-default btn-xs' do
+                        %i.fa.fa-pencil.text-muted
+                        Edit
+                      = link_to admin_product_variant_path(@product, variant), method: :delete, class: 'btn btn-danger btn-xs', :data => { confirm: 'Are you sure?', dismiss: 'alert' } do
+                        %i.fa.fa-trash-o
+                        Remove
+
+
+          %footer.panel-footer
+            .row
+              .col-sm-4.hidden-xs
+                = link_to 'New Variant', new_admin_product_variant_path(@product), class: 'btn btn-s-md btn-info btn-rounded'
+
+      .col-lg-3
+        = render "backend/products/side_nav"

@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Tracking:
+  = @shipment.tracking
+%p
+  %b Number:
+  = @shipment.number
+%p
+  %b Cost:
+  = @shipment.cost
+%p
+  %b Shipped at:
+  = @shipment.shipped_at
+%p
+  %b Order:
+  = @shipment.order
+%p
+  %b Address:
+  = @shipment.address
+%p
+  %b State:
+  = @shipment.state
+
+= link_to 'Edit', edit_admin_shipment_path(@shipment)
+\|
+= link_to 'Back', admin_shipments_path

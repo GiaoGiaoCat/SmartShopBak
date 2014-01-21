@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Sku:
+  = @variant.sku
+%p
+  %b Deleted at:
+  = @variant.deleted_at
+%p
+  %b Product:
+  = @variant.product
+%p
+  %b Position:
+  = @variant.position
+%p
+  %b Price:
+  = @variant.cost_price
+
+= link_to 'Edit', edit_admin_variant_path(@variant)
+\|
+= link_to 'Back', admin_variants_path

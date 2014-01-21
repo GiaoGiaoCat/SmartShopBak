@@ -1,0 +1,11 @@
+%fieldset
+  %legend.wrapper-sm
+    %i.fa.fa-shopping-cart.text-muted.m-r-xs
+    Products
+  #products
+    = f.simple_fields_for :line_items do |line_item|
+      = render 'line_item', :f => line_item
+    .links
+      .form-group
+        .col-sm-4.col-sm-offset-2
+          = link_to_add_association 'add product', f, :line_items, partial: 'line_item', class: 'btn btn-primary', "data-association-insertion-node" => "#products .links"

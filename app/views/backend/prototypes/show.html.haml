@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @prototype.name
+
+= link_to 'Edit', edit_admin_prototype_path(@prototype)
+\|
+= link_to 'Back', admin_prototypes_path

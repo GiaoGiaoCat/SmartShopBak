@@ -1,0 +1,13 @@
+%tr{ id: dom_id(order) }
+  %td= check_box_tag 'ids[]', order.id
+  %td= order.number
+  %td= order.item_total
+  %td= order.total
+  %td= show_state(order.state)
+  %td.col-lg-action
+    = link_to admin_order_path(order), class: 'btn btn-default btn-xs' do
+      %i.fa.fa-file-text.text-muted
+      Show
+    = link_to edit_admin_order_path(order), class: 'btn btn-default btn-xs' do
+      %i.fa.fa-pencil.text-muted
+      Edit

@@ -1,0 +1,2 @@
+module Backend::ShippingCategoriesHelper
+end

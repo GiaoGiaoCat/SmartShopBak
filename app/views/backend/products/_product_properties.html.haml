@@ -1,0 +1,11 @@
+%fieldset
+  %legend.wrapper-sm
+    %i.fa.fa-shopping-cart.text-muted.m-r-xs
+    Product Properties
+  #properties
+    = f.simple_fields_for :product_properties do |property|
+      = render 'product_property', :f => property
+    .links
+      .form-group
+        .col-sm-4.col-sm-offset-2
+          = link_to_add_association 'add property', f, :product_properties, partial: 'product_property', class: 'btn btn-primary', "data-association-insertion-node" => "#properties .links"

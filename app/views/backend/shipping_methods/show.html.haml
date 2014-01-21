@@ -1,0 +1,16 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @shipping_method.name
+%p
+  %b Deleted at:
+  = @shipping_method.deleted_at
+
+%p
+  %b Shipping Category:
+  = @shipping_method.shipping_categories.collect(&:name)
+
+= link_to 'Edit', edit_admin_shipping_method_path(@shipping_method)
+\|
+= link_to 'Back', admin_shipping_methods_path
