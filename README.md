@@ -18,6 +18,15 @@ touch config/initializers/secrets.yml
 rake secret
 then config your `secret_key_base`
 ```
+
+因为 rails 4.1 仍在 beta 版本，所以你还需要添加如下文件
+
+```ruby
+touch config/initializers/secret_token.rb
+rake secret
+SmartShop::Application.config.secret_key_base = 'YOUR KEY'
+```
+
 ## 数据库创建和初始化
 
 先配置 ```config/database.yml```
