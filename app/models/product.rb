@@ -53,6 +53,8 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :product_properties,
     allow_destroy: true,
     reject_if: lambda { |pp| pp[:name].blank? }
+
+  alias :options :product_option_types
   # class methods .............................................................
   # public instance methods ...................................................
   # HACK:
@@ -71,6 +73,17 @@ class Product < ActiveRecord::Base
 
   def available_on
     self[:available_on].to_s(:date) if self[:available_on]
+  end
+
+  def empty_option_values?
+    options.empty? || options.any? do |opt|
+      opt.option_type.option_values.empty?
+    end
+  end
+
+  # the master variant is not a member of the variants array
+  def has_variants?
+    variants.any?
   end
 
   # Master variant may be deleted (i.e. when the product is deleted)
