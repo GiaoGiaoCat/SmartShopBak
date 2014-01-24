@@ -5,7 +5,12 @@ class Backend::ImagesController < Backend::BaseController
   # GET /images
   # GET /images.json
   def index
-    @images = Image.page params[:page]
+    @images =
+      if @product
+        @product.variant_images.page params[:page]
+      else
+        Image.page params[:page]
+      end
   end
 
   # GET /images/1

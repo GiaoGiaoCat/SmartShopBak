@@ -21,6 +21,8 @@ class Product < ActiveRecord::Base
     class_name: 'Variant',
     dependent: :destroy
 
+  has_many :variant_images, -> { order(:position) }, source: :images, through: :variants_including_master
+
   has_many :product_option_types, dependent: :destroy, inverse_of: :product
   has_many :option_types, through: :product_option_types
   has_many :product_properties, dependent: :destroy, inverse_of: :product
@@ -48,6 +50,9 @@ class Product < ActiveRecord::Base
   delegate :sku, :price, :currency, :cost_price, :cost_currency,
            :weight, :height, :width, :depth, :is_master,
            to: :master
+
+  delegate :images, to: :master, prefix: true
+  alias_method :images, :master_images
 
   accepts_nested_attributes_for :variants, allow_destroy: true
   accepts_nested_attributes_for :product_properties,
