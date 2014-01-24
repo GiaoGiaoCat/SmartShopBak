@@ -32,11 +32,12 @@
                         %abbr(title = 'required') *
                         Permalink
                       = f.text_field :permalink, class: 'form-control'
-                    .col-sm-4
-                      %label
-                        %abbr(title = 'required') *
-                        Master Sku
-                      = f.text_field :master_sku, class: 'form-control', value: @product.sku
+                    - unless @product.has_variants?
+                      .col-sm-4
+                        %label
+                          %abbr(title = 'required') *
+                          Master Sku
+                        = f.text_field :master_sku, class: 'form-control', value: @product.sku
                     / .col-sm-3
                     / todo cost price
                     / .col-sm-3
@@ -64,13 +65,10 @@
                       %label Shipping Category
                       = f.select :shipping_category_id, options_from_collection_for_select(ShippingCategory.all, "id", "name", @product.shipping_category_id), { include_blank: false }, { class: 'select required form-control' }
 
-
-                  - if @product.new_record?
-                    #property_ids.form-group
-                      %label.col-sm-2.control-label{ for: 'property_ids' }
-                        Prototype
-                      .col-sm-10
-                        = select_tag "product[prototype_id]", options_from_collection_for_select(Prototype.all, "id", "name"), multiple: false, class: 'select required form-control'
+                  .form-group.pull-in.clearfix
+                    .col-sm-8
+                      %label Option Types
+                      = select_tag "product[option_type_ids]", options_from_collection_for_select(OptionType.all, "id", "name", @product.option_type_ids), multiple: true, class: 'col-xs-12 m-n no-padder'
 
                 %footer.panel-footer.text-right.bg-light.lter
                   = link_to "Cancel", admin_products_path, class: 'btn btn-default'

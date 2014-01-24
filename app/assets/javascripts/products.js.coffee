@@ -11,3 +11,7 @@ attachGetOptionTypesHandler = ->
     dataType: 'script'
 
 $(document).on 'change', '#product_prototype_id', attachGetOptionTypesHandler
+
+$ ->
+  if $.fn.select2
+    $("#product_option_type_ids").select2()

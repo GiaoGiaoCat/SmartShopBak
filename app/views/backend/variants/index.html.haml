@@ -29,11 +29,19 @@
                         %i.fa.fa-trash-o
                         Remove
 
-
           %footer.panel-footer
             .row
               .col-sm-4.hidden-xs
-                = link_to 'New Variant', new_admin_product_variant_path(@product), class: 'btn btn-s-md btn-info btn-rounded'
+                - unless @product.empty_option_values?
+                  = link_to 'New Variant', new_admin_product_variant_path(@product), class: 'btn btn-s-md btn-info btn-rounded'
 
+        .alert.alert-info
+          %i.fa.fa-info-sign
+          %strong Notice!
+          To add variants, you must first define
+          = link_to 'Option Types', edit_admin_product_path(@product), class: 'alert-link'
+          \ and
+          = link_to 'Option Values', admin_option_types_path, class: 'alert-link'
+          \.
       .col-lg-3
         = render "backend/products/side_nav"
