@@ -61,6 +61,10 @@ class Variant < ActiveRecord::Base
     values.to_sentence({ words_connector: ", ", two_words_connector: ", " })
   end
 
+  def sku_and_options_text
+    "#{sku} #{options_text}".strip
+  end
+
   # protected instance methods ................................................
   # private instance methods ..................................................
   private

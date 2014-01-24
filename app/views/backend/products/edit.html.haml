@@ -32,12 +32,11 @@
                         %abbr(title = 'required') *
                         Permalink
                       = f.text_field :permalink, class: 'form-control'
-                    - unless @product.has_variants?
-                      .col-sm-4
-                        %label
-                          %abbr(title = 'required') *
-                          Master Sku
-                        = f.text_field :master_sku, class: 'form-control', value: @product.sku
+                    .col-sm-4
+                      %label
+                        %abbr(title = 'required') *
+                        Master Sku
+                      = f.text_field :master_sku, class: 'form-control', value: @product.sku
                     / .col-sm-3
                     / todo cost price
                     / .col-sm-3

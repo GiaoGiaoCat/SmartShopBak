@@ -1,0 +1,19 @@
+= simple_form_for([:admin, @product, @image]) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :image, label: "File", input_html: { class: 'filestyle input-s'}
+    = f.hidden_field :image_cache
+    .line.line-dashed.line-lg.pull-in
+    .form-group
+      %label.col-sm-2.control-label{ for: 'property_ids' }
+        Variant
+      .col-sm-10
+        = f.select :variant_id, options_for_select(@variants, @image.variant_id), {}, class: 'select required form-control'
+
+    .line.line-dashed.line-lg.pull-in
+
+  .form-group
+    .col-sm-4.col-sm-offset-2
+      = link_to "Cancel", admin_product_images_path(@product), class: 'btn btn-default'
+      = f.button :submit, class: 'btn btn-primary'
