@@ -1,0 +1,17 @@
+%section.vbox
+  %section.scrollable.padder
+    = render_breadcrumb
+
+    %section.panel.panel-default
+      %header.panel-heading.font-bold Show Shop
+      .panel-body
+        = show_flash_messages
+        .form-horizontal
+          .form-group
+            %label.col-sm-2.control-label Name
+            .col-sm-10.show-field-value= @shop.name
+          .line.line-dashed.line-lg.pull-in
+          .form-group
+            .col-sm-10.col-sm-offset-2
+              = link_to "Back", admin_shops_path, class: 'btn btn-default'
+              = link_to "Edit", edit_admin_shop_path(@shop), class: 'btn btn-default btn-primary'

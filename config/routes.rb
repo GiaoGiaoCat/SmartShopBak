@@ -6,17 +6,14 @@ SmartShop::Application.routes.draw do
   namespace :admin, module: "backend" do
     root 'dashboard#index'
 
-    resources :shops
-    resources :addresses
+    resources :shops, :addresses
+    resources :payments, :shipments, :shipping_methods, :shipping_categories
+    resources :prototypes, :properties, :option_types
     resources :orders do
       collection do
         post :change_states
       end
     end
-    resources :payments
-    resources :shipments
-    resources :shipping_methods
-    resources :shipping_categories
     resources :products do
       collection do
         get :trash
@@ -25,11 +22,8 @@ SmartShop::Application.routes.draw do
         put :restore
         get :product_properties
       end
-      resources :variants
+      resources :variants, :images
     end
-    resources :prototypes
-    resources :properties
-    resources :option_types
   end
 
   # Example of named route that can be invoked with purchase_url(id: product.id)

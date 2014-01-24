@@ -4,7 +4,7 @@
     = link_to_unless_current_page edit_admin_product_path(@product), class: 'list-group-item', current_class: 'bg-primary' do
       %i.fa.fa-pencil-square-o.fa-fw
       PRODUCT DETAILS
-    = link_to '#', class: 'list-group-item' do
+    = link_to_unless_current_page admin_product_images_path(@product), class: 'list-group-item', current_class: 'bg-primary' do
       %span.badge 0
       %i.fa.fa-picture-o.icon-muted.fa-fw
       IMAGES

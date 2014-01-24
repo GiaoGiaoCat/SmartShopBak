@@ -42,9 +42,10 @@ input[type=checkbox].form-control { width: auto; height: auto; display: inline; 
 /* fix .select bug with fuelux */
 div.select { display: block; }
 
-#content legend { font-size: 13px; }
 
 /* custom css */
+#content legend { font-size: 13px; }
+
 .loading-indicator {
   z-index: 99;
   position: absolute;

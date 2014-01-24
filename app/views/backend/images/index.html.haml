@@ -1,0 +1,36 @@
+%section.vbox
+  %section.scrollable.padder
+    = render_breadcrumb
+
+    .row
+      .col-lg-9
+        %section.panel.panel-default
+          %header.panel-heading.font-bold Listing Images
+          .table-responsive
+            %table.table.table-striped.b-t.b-light.text-sm
+              %thead
+                %tr
+                  %th Thumbnail
+                  %th Variant
+                  %th Alternative Text
+                  %th.col-lg-action
+
+              %tbody
+                - @images.each do |image|
+                  %tr
+                    %td= image.id
+                    %td= image.id
+                    %td= image.alt
+                    %td.col-lg-action
+                      = link_to edit_admin_product_image_path(@product, image), class: 'btn btn-default btn-xs' do
+                        %i.fa.fa-pencil.text-muted
+                        Edit
+
+          %footer.panel-footer
+            .row
+              .col-sm-4.hidden-xs
+                = link_to 'New Image', new_admin_product_image_path(@product), class: 'btn btn-s-md btn-info btn-rounded'
+              .col-sm-4.text-right.text-center-xs
+                = paginate @images
+      .col-lg-3
+        = render "backend/products/side_nav"
