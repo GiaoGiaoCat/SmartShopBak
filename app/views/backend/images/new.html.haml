@@ -2,7 +2,12 @@
   %section.scrollable.padder
     = render_breadcrumb
 
-    %section.panel.panel-default
-      %header.panel-heading.font-bold New Image
-      .panel-body
-        = render 'form'
+    .row
+      .col-lg-9
+        %section.panel.panel-default
+          %header.panel-heading.font-bold New Image
+          .panel-body
+            = render 'form'
+
+      .col-lg-3
+        = render "backend/products/side_nav"
