@@ -1,5 +1,6 @@
-= content_for :message do
-  - if model.errors.any?
-    %ul
+- if model.errors.any?
+  .alert.alert-danger
+    Please review the problems below:
+    %ul.m-t-sm
       - model.errors.full_messages.each do |msg|
         %li= msg

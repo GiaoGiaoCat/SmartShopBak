@@ -12,7 +12,7 @@
     = f.input :sku
     .line.line-dashed.line-lg.pull-in
     - if @variant.new_record?
-      = f.input :variant_price
+      = f.input :variant_price, label: "Price"
     - else
       = f.input :price
     .line.line-dashed.line-lg.pull-in

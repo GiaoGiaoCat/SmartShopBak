@@ -22,6 +22,7 @@ class Variant < ActiveRecord::Base
   # validates :sku, presence: true, uniqueness: true
   # v1 版本不需要进价
   # validates :cost_price, numericality: { greater_than_or_equal_to: 0, allow_nil: true }
+  validates :variant_price, numericality: { greater_than_or_equal_to: 0 }, presence: true
   # callbacks .................................................................
   # v1 版本不需要进价
   before_validation :set_cost_currency
