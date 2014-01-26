@@ -53,7 +53,7 @@ class Backend::ShippingMethodsController < Backend::BaseController
   # DELETE /shipping_methods/1
   # DELETE /shipping_methods/1.json
   def destroy
-    @shipping_method.destroy
+    @shipping_method.delete
     respond_to do |format|
       format.html { redirect_to admin_shipping_methods_url }
       format.json { head :no_content }

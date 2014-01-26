@@ -62,13 +62,6 @@ class Product < ActiveRecord::Base
   alias :options :product_option_types
   # class methods .............................................................
   # public instance methods ...................................................
-  # HACK:
-  # `restore` method of paranoia gem not working for rails 4.1.
-  # read: https://github.com/radar/paranoia/pull/95
-  # Product.restore(params[:id])
-  def restore
-    self.update_column(:deleted_at, nil)
-  end
 
   # Adding properties and option types on creation based on a chosen prototype
   attr_reader :prototype_id

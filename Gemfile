@@ -71,28 +71,28 @@ gem 'mini_magick', require: false
 
 # Authentication
 # https://github.com/plataformatec/devise/wiki/How-Tos
-gem 'devise'
+# gem 'devise'
 # gem 'devise-encryptable'
-gem 'rolify', github: 'EppO/rolify'
+# gem 'rolify', github: 'EppO/rolify'
 
 # Standardized Multi-Provider Authentication
-gem "omniauth"
-gem "omniauth-github"
-gem "omniauth-baidu", github: 'liwei78/omniauth-baidu'
+# gem "omniauth"
+# gem "omniauth-github"
+# gem "omniauth-baidu", github: 'liwei78/omniauth-baidu'
 
 # session
-gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
+# gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 
 # Permission
 # https://github.com/ryanb/cancan
-gem "cancan"
+# gem "cancan"
 
 # Encrpyt the ID
 # https://github.com/pencil/encrypted_id
 # gem 'encrypted_id'
 
 # Hide and restore records without actually deleting records.
-gem 'paranoia', '~> 2.0'
+gem 'paranoia', '~> 2.0.2'
 
 # State Machines
 # https://github.com/aasm/aasm

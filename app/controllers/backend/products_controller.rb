@@ -54,7 +54,7 @@ class Backend::ProductsController < Backend::BaseController
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
-    @product.destroy
+    @product.delete
     respond_to do |format|
       format.html { redirect_to admin_products_url }
       format.json { head :no_content }
@@ -62,19 +62,11 @@ class Backend::ProductsController < Backend::BaseController
   end
 
   def trash
-    # HACK:
-    # `only_deleted` method of paranoia gem not working for rails 4.1.
-    # read: https://github.com/radar/paranoia/pull/95
-    # @products = Product.only_deleted.page params[:page]
-    @products = Product.unscope(:where).where.not(deleted_at: nil).page params[:page]
+    @products = Product.only_deleted.page params[:page]
     render :file => 'backend/products/index'
   end
 
   def restore
-    # HACK:
-    # `restore` method of paranoia gem not working for rails 4.1.
-    # read: https://github.com/radar/paranoia/pull/95
-    # Product.restore(params[:id])
     @product.restore
     respond_to do |format|
       format.html { redirect_to admin_products_url, notice: 'Product was successfully restored.' }
@@ -88,11 +80,7 @@ class Backend::ProductsController < Backend::BaseController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
-      # HACK:
-      # `with_deleted` method of paranoia gem not working for rails 4.1.
-      # read: https://github.com/radar/paranoia/pull/95
-      # @product = Product.with_deleted.find(params[:id])
-      @product = Product.unscope(:where).find(params[:id])
+      @product = Product.with_deleted.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -62,7 +62,7 @@ class Backend::VariantsController < Backend::BaseController
   # DELETE /variants/1
   # DELETE /variants/1.json
   def destroy
-    @variant.destroy
+    @variant.delete
     respond_to do |format|
       format.html { redirect_to admin_product_variants_url(@product) }
       format.json { head :no_content }

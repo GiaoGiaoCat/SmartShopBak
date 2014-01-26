@@ -54,7 +54,7 @@ class Backend::PaymentsController < Backend::BaseController
   # DELETE /payments/1
   # DELETE /payments/1.json
   def destroy
-    @payment.destroy
+    @payment.delete
     respond_to do |format|
       format.html { redirect_to admin_payments_url }
       format.json { head :no_content }
