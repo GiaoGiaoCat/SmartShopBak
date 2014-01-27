@@ -17,9 +17,6 @@
               %tr
                 %td= product.name
                 %td.col-lg-action
-                  = link_to admin_product_path(product), class: 'btn btn-default btn-xs' do
-                    %i.fa.fa-file-text.text-muted
-                    Show
                   = link_to edit_admin_product_path(product), class: 'btn btn-default btn-xs' do
                     %i.fa.fa-pencil.text-muted
                     Edit
