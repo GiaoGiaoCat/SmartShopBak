@@ -1,6 +1,6 @@
 = simple_form_for([:admin, @product]) do |f|
   = f.error_notification
-  = @product.errors.full_messages
+  / = @product.errors.full_messages
   %fieldset
     %legend.wrapper-sm
       %i.fa.fa-file-text.text-muted.m-r-xs

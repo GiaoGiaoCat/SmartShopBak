@@ -45,6 +45,7 @@ div.select { display: block; }
 
 /* custom css */
 #content legend { font-size: 13px; }
+.field_with_errors input { border-color: #FF5F5F !important; }
 
 .loading-indicator {
   z-index: 99;

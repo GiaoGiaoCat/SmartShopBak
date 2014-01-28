@@ -7,7 +7,8 @@ module Backend::ProductsHelper
       else
         [:cn, "￥"]
       end
-    number_to_currency(number, locale: local, unit: unit)
+    # number_to_currency(number, locale: local, unit: unit)
+    number_to_currency(number, unit: unit)
   end
 
   # Set a class when on current page by `current_class`.
@@ -16,5 +17,11 @@ module Backend::ProductsHelper
       html_options[:class] += " #{html_options[:current_class]}"
     end
     link_to(options, html_options, &block)
+  end
+
+  def thumb_image(product)
+    if product.images && !product.images.size.zero?
+      image_tag product.images.first.image_url(:thumb), class: 'b-a'
+    end
   end
 end

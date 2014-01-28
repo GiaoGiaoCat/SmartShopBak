@@ -4,22 +4,35 @@
 
     %section.panel.panel-default
       %header.panel-heading.font-bold Listing products
-      = show_flash_messages
+      #flash_msg.row.m-n= show_flash_messages
+      .row.text-sm.wrapper
+        .col-sm-9.m-b-xs
+        .col-sm-3
+          = form_tag(admin_products_path, method: :get) do
+            .input-group
+              = text_field_tag 'keyword', params[:keyword], class: 'input-sm form-control', placeholder: 'Search'
+              .input-group-btn
+                = button_tag 'Go', class: 'btn btn-sm btn-default'
+
       .table-responsive
         %table.table.table-striped.b-t.b-light.text-sm
           %thead
             %tr
+              %th.col-lg-2 Sku
+              %th.col-lg-2 Thumbnail
               %th Name
+              %th.col-lg-2 Master Price
               %th.col-lg-action
 
           %tbody
             - @products.each do |product|
               %tr
-                %td= product.name
+                %td= product.sku
+                %td
+                  %span.thumb= thumb_image(product)
+                %td= link_to product.name, edit_admin_product_path(product)
+                %td= number_to_money(product.price, product.currency)
                 %td.col-lg-action
-                  = link_to admin_product_path(product), class: 'btn btn-default btn-xs' do
-                    %i.fa.fa-file-text.text-muted
-                    Show
                   = link_to edit_admin_product_path(product), class: 'btn btn-default btn-xs' do
                     %i.fa.fa-pencil.text-muted
                     Edit
@@ -37,7 +50,5 @@
         .row
           .col-sm-4.hidden-xs
             = link_to 'New Product', new_admin_product_path, class: 'btn btn-s-md btn-info btn-rounded'
-          .col-sm-4.text-center
-            %small.text-muted.inline.m-t-sm.m-b-sm showing 20-30 of 50 items
           .col-sm-4.text-right.text-center-xs
             = paginate @products

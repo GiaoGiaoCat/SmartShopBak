@@ -22,6 +22,16 @@ class Variant < ActiveRecord::Base
   # validates :sku, presence: true, uniqueness: true
   # v1 版本不需要进价
   # validates :cost_price, numericality: { greater_than_or_equal_to: 0, allow_nil: true }
+  # HACK:
+  # 在创建和添加时候使用不同的 price 字段是权益之计，这里需要重构。
+  validates :variant_price,
+    numericality: { greater_than_or_equal_to: 0 },
+    presence: true,
+    on: :create
+  validates :price,
+      numericality: { greater_than_or_equal_to: 0 },
+      presence: true,
+      on: :update
   # callbacks .................................................................
   # v1 版本不需要进价
   before_validation :set_cost_currency

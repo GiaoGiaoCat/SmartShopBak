@@ -41,6 +41,11 @@ class Product < ActiveRecord::Base
   after_initialize :ensure_master
   # scopes ....................................................................
   scope :available, -> { where("available_on <= ?", Time.now) }
+  scope :search, ->(k) {
+    joins(:variants_including_master)
+      .where("variants.sku LIKE ? OR products.name LIKE ?", "%#{k}%", "%#{k}%")
+      .distinct
+  }
   # additional config .........................................................
   # option_values_hash example:
   # { option_type_id_1: [option_value_ids], option_type_id_2: [option_value_ids] }
@@ -62,13 +67,6 @@ class Product < ActiveRecord::Base
   alias :options :product_option_types
   # class methods .............................................................
   # public instance methods ...................................................
-  # HACK:
-  # `restore` method of paranoia gem not working for rails 4.1.
-  # read: https://github.com/radar/paranoia/pull/95
-  # Product.restore(params[:id])
-  def restore
-    self.update_column(:deleted_at, nil)
-  end
 
   # Adding properties and option types on creation based on a chosen prototype
   attr_reader :prototype_id
