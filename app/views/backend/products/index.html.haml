@@ -9,13 +9,20 @@
         %table.table.table-striped.b-t.b-light.text-sm
           %thead
             %tr
+              %th.col-lg-2 Sku
+              %th Thumbnail
               %th Name
+              %th.col-lg-2 Master Price
               %th.col-lg-action
 
           %tbody
             - @products.each do |product|
               %tr
-                %td= product.name
+                %td= product.sku
+                %td
+                  %span.thumb= thumb_image(product)
+                %td= link_to product.name, edit_admin_product_path(product)
+                %td= number_to_money(product.price, product.currency)
                 %td.col-lg-action
                   = link_to edit_admin_product_path(product), class: 'btn btn-default btn-xs' do
                     %i.fa.fa-pencil.text-muted
