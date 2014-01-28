@@ -41,6 +41,11 @@ class Product < ActiveRecord::Base
   after_initialize :ensure_master
   # scopes ....................................................................
   scope :available, -> { where("available_on <= ?", Time.now) }
+  scope :search, ->(k) {
+    joins(:variants_including_master)
+      .where("variants.sku LIKE ? OR products.name LIKE ?", "%#{k}%", "%#{k}%")
+      .distinct
+  }
   # additional config .........................................................
   # option_values_hash example:
   # { option_type_id_1: [option_value_ids], option_type_id_2: [option_value_ids] }

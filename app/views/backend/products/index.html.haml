@@ -4,13 +4,22 @@
 
     %section.panel.panel-default
       %header.panel-heading.font-bold Listing products
-      = show_flash_messages
+      #flash_msg.row.m-n= show_flash_messages
+      .row.text-sm.wrapper
+        .col-sm-9.m-b-xs
+        .col-sm-3
+          = form_tag(admin_products_path, method: :get) do
+            .input-group
+              = text_field_tag 'keyword', params[:keyword], class: 'input-sm form-control', placeholder: 'Search'
+              .input-group-btn
+                = button_tag 'Go', class: 'btn btn-sm btn-default'
+
       .table-responsive
         %table.table.table-striped.b-t.b-light.text-sm
           %thead
             %tr
               %th.col-lg-2 Sku
-              %th Thumbnail
+              %th.col-lg-2 Thumbnail
               %th Name
               %th.col-lg-2 Master Price
               %th.col-lg-action

@@ -16,8 +16,8 @@ class Order < ActiveRecord::Base
   after_save :update_totals
   # scopes ....................................................................
   scope :search, ->(k) {
-    joins(:ship_address).
-      where("addresses.name LIKE ? OR addresses.phone LIKE ?", "%#{k}%", "%#{k}%")
+    joins(:ship_address)
+      .where("addresses.name LIKE ? OR addresses.phone LIKE ?", "%#{k}%", "%#{k}%")
   }
   scope :working, -> { where(state: ['pending', 'paid']) }
   # additional config .........................................................

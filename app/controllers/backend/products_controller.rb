@@ -4,7 +4,7 @@ class Backend::ProductsController < Backend::BaseController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.page params[:page]
+    @products = Product.search(params[:keyword]).page params[:page]
   end
 
 

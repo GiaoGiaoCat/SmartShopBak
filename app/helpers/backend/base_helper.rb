@@ -30,7 +30,9 @@ module Backend::BaseHelper
       content = content_tag(:button, "x", class: 'close', "data-dismiss" => 'alert')
       # content += content_tag(:h4, "Oh...")
       content += value
-      class_name = (key == :notice ? "alert alert-success m" : "alert alert-warning")
+      class_name = "alert m m-b-none "
+      class_name += (key == :notice ? "alert-success" : "alert-warning")
+
       return content_tag(:div, content, class: class_name)
     end
   end
