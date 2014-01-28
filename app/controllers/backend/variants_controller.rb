@@ -6,11 +6,12 @@ class Backend::VariantsController < Backend::BaseController
   # GET /variants.json
   def index
     @variants =
-      if @product
-        @product.variants.page params[:page]
+      if params[:including_master]
+        @product.variants_including_master
       else
-        Variant.page params[:page]
+        @product.variants
       end
+    @variants = @variants.page params[:page]
   end
 
   # GET /variants/1

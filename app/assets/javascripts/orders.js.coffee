@@ -9,6 +9,7 @@ attachGetVariantsHandler = ->
     type: 'GET'
     url: "/admin/products/" + product_id + "/variants"
     dataType: 'json'
+    data: { including_master: 1 }
     success: (data,textStatus,jqXHR) ->
       variant_id_element = $this.parents(".nested-fields").find('.variant_selecter')
       variant_id_element.empty()
@@ -18,13 +19,15 @@ attachGetVariantsHandler = ->
 
 attachGetVariantPriceHandler = ->
   $this = $(this)
+  nested_elem = $this.parents(".nested-fields")
+  product_id = $("option:selected", nested_elem.find('.product_selecter')).val()
   variant_id = $("option:selected", $(this)).val()
   $.ajax
     type: 'GET'
-    url: "/admin/variants/" + variant_id
+    url: "/admin/products/" + product_id + "/variants/" + variant_id
     dataType: 'json'
     success: (data,textStatus,jqXHR) ->
-      variant_price_element = $this.parents(".nested-fields").find('.price_input')
+      variant_price_element = nested_elem.find('.price_input')
       variant_price_element.val(data.price)
 
 attachChangeStateHandler = (e)->
