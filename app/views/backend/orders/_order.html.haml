@@ -1,13 +1,14 @@
 %tr{ id: dom_id(order) }
   %td= check_box_tag 'ids[]', order.id
+  %td= order.created_at.to_s(:date)
   %td= order.number
-  %td= order.item_total
-  %td= order.total
   %td= show_state(order.state)
+  %td= show_state(order.state)
+  %td= show_state(order.state)
+  %td= order.ship_address.name
+  %td= number_to_money(order.total, :cn)
+
   %td.col-lg-action
-    = link_to admin_order_path(order), class: 'btn btn-default btn-xs' do
-      %i.fa.fa-file-text.text-muted
-      Show
     = link_to edit_admin_order_path(order), class: 'btn btn-default btn-xs' do
       %i.fa.fa-pencil.text-muted
       Edit
