@@ -21,20 +21,18 @@ class Backend::VariantsController < Backend::BaseController
 
   # GET /variants/new
   def new
-    @variant = Variant.new
-    @variant.assets.build
+    @variant = @product.variants.new
+    @variant.default_price = @product.master.default_price.clone
   end
 
   # GET /variants/1/edit
   def edit
-    @variant.assets.build if @variant.assets.blank?
   end
 
   # POST /variants
   # POST /variants.json
   def create
-    @variant = @product.variants.new(params.require(:variant).permit!)
-    @variant.price = params[:variant][:price]
+    @variant = @product.variants.new(variant_params)
     respond_to do |format|
       if @variant.save
         format.html { redirect_to admin_product_variants_url(@product), notice: 'Variant was successfully created.' }
@@ -82,6 +80,6 @@ class Backend::VariantsController < Backend::BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def variant_params
-      params.require(:variant).permit(:sku, :product_id, :position, :price, :variant_price, option_value_ids: [], assets_attributes: [:id, :image, :_destroy])
+      params.require(:variant).permit(:sku, :product_id, :position, :price, :variant_price, option_value_ids: [])
     end
 end
