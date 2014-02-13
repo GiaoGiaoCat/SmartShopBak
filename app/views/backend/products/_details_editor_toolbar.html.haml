@@ -1,9 +1,10 @@
-%header.panel-heading
+%header.panel-heading.pos-rlt
   %ul.nav.nav-tabs
     %li.active
       = link_to("#text-area", data: { toggle: 'tab' }, id: 'editor-edit-btn') do
-        = content_tag(:i, nil, class: 'fa fa-comments text-default') + ' Edit'
+        = content_tag(:i, nil, class: 'fa fa-pencil') + ' Edit'
     %li
       = link_to("#preview-area", data: { toggle: 'tab' }, id: 'editor-preview-btn') do
-        = content_tag(:i, nil, class: 'fa fa-comments text-default') + ' Preview'
-  / = link_to("1", "#", id: "topic_add_image", rel: "twipsy", class: "icon small_image")
+        = content_tag(:i, nil, class: 'fa fa-eye') + ' Preview'
+  = link_to("#", id: "detail_add_image", class: "detail-add-image pos-abt") do
+    = content_tag(:i, nil, class: 'fa fa-picture-o') + ' Upload Image'
