@@ -9,7 +9,7 @@
       %label.col-sm-2.control-label{ for: 'property_ids' }
         Variant
       .col-sm-10
-        = f.select :variant_id, options_for_select(@variants, @image.variant_id), {}, class: 'select required form-control'
+        = f.select :viewable_id, options_for_select(@variants, @image.viewable_id), {}, class: 'select required form-control'
 
     .line.line-dashed.line-lg.pull-in
 

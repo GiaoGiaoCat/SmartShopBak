@@ -30,14 +30,16 @@ ActiveRecord::Schema.define(version: 20140106094918) do
 
   create_table "assets", force: true do |t|
     t.string   "image"
-    t.integer  "variant_id"
+    t.integer  "viewable_id"
+    t.string   "viewable_type"
     t.integer  "position"
     t.string   "alt"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "assets", ["variant_id"], name: "index_assets_on_variant_id"
+  add_index "assets", ["viewable_id"], name: "index_assets_on_viewable_id"
+  add_index "assets", ["viewable_type"], name: "index_assets_on_viewable_type"
 
   create_table "line_items", force: true do |t|
     t.integer  "variant_id"
