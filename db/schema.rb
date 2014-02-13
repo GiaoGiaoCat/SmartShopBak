@@ -171,7 +171,7 @@ ActiveRecord::Schema.define(version: 20140106094918) do
     t.text     "meta_description"
     t.string   "meta_keywords"
     t.integer  "shipping_category_id"
-    t.text     "details"
+    t.text     "detail"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

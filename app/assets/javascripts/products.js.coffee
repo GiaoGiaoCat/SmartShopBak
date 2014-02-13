@@ -14,6 +14,7 @@ $ ->
         preview: "markdown/bartik.css"
         editor: "markdown/epic-light.css"
       button: false
+      clientSideStorage: false
 
     editor = new EpicEditor(opts).load()
 

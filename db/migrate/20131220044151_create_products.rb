@@ -9,7 +9,7 @@ class CreateProducts < ActiveRecord::Migration
       t.text     :meta_description
       t.string   :meta_keywords
       t.integer  :shipping_category_id
-      t.text     :details
+      t.text     :detail
 
       t.timestamps
     end
