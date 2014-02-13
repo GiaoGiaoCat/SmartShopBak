@@ -30,6 +30,8 @@
 //= require libs/moment.min
 //= require combodate/combodate
 //= require select2/select2.min
+//= require markdown/epiceditor.min
+
 
 // Dynamic nested form plugins
 //= require cocoon

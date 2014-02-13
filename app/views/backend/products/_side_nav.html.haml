@@ -3,6 +3,9 @@
   #product_sidenav.list-group.bg-white
     = link_to_unless_current_page edit_admin_product_path(@product), class: 'list-group-item', current_class: 'bg-primary' do
       %i.fa.fa-pencil-square-o.fa-fw
+      PRODUCT ATTRIBUTES
+    = link_to_unless_current_page edit_details_admin_product_path(@product), class: 'list-group-item', current_class: 'bg-primary' do
+      %i.fa.fa-pencil-square-o.fa-fw
       PRODUCT DETAILS
     = link_to_unless_current_page admin_product_images_path(@product), class: 'list-group-item', current_class: 'bg-primary' do
       %span.badge= @product.variant_images.count

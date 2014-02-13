@@ -20,7 +20,7 @@ SmartShop::Application.routes.draw do
       end
       member do
         put :restore
-        get :product_properties
+        get :product_properties, :edit_details
       end
       resources :variants, :images
     end

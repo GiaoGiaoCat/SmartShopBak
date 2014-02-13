@@ -1,5 +1,5 @@
 class Backend::ProductsController < Backend::BaseController
-  before_action :set_product, only: [:show, :edit, :update, :destroy, :restore, :product_properties]
+  before_action :set_product, only: [:show, :edit, :edit_details, :update, :destroy, :restore, :product_properties]
 
   # GET /products
   # GET /products.json

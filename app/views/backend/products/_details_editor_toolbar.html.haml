@@ -1,0 +1,9 @@
+%header.panel-heading
+  %ul.nav.nav-tabs
+    %li.active
+      = link_to("#text-area", data: { toggle: 'tab' }, id: 'editor-edit-btn') do
+        = content_tag(:i, nil, class: 'fa fa-comments text-default') + ' Edit'
+    %li
+      = link_to("#preview-area", data: { toggle: 'tab' }, id: 'editor-preview-btn') do
+        = content_tag(:i, nil, class: 'fa fa-comments text-default') + ' Preview'
+  / = link_to("1", "#", id: "topic_add_image", rel: "twipsy", class: "icon small_image")
