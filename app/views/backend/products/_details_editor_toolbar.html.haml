@@ -8,3 +8,4 @@
         = content_tag(:i, nil, class: 'fa fa-eye') + ' Preview'
   = link_to("#", id: "detail_add_image", class: "detail-add-image pos-abt") do
     = content_tag(:i, nil, class: 'fa fa-picture-o') + ' Upload Image'
+  = file_field_tag :file, id: 'product_upload_images', class: 'hide'

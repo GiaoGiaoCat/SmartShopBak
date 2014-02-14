@@ -37,3 +37,29 @@ attachGetOptionTypesHandler = ->
 
 $(document).on 'change', '#product_prototype_id', attachGetOptionTypesHandler
 
+
+attachImageUploaderHandler = ->
+  $("#product_upload_images").click()
+  # $("#attachments .links a").click()
+  # $("#attachments .nested-fields:last input[type='file']").click()
+  # initUploader : () ->
+  #   $("#topic_add_image").bind "click", () ->
+  #     $(".topic_editor").focus()
+  #     $("#topic_upload_images").click()
+  #     return false
+
+  #   opts =
+  #     url : "/photos"
+  #     type : "POST"
+  #     beforeSend : () ->
+  #       $("#detail_add_image").hide()
+  #       $("#detail_add_image").before("<span class='loading'>上传中...</span>")
+  #     success : (result, status, xhr) ->
+  #       $("#detail_add_image").parent().find("span.loading").remove()
+  #       $("#detail_add_image").show()
+  #       Topics.appendImageFromUpload([result])
+
+  #   $("#topic_upload_images").fileUpload opts
+  #   return false
+
+$(document).on 'click', '#detail_add_image', attachImageUploaderHandler
