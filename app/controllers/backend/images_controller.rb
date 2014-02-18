@@ -30,12 +30,12 @@ class Backend::ImagesController < Backend::BaseController
   # POST /images
   # POST /images.json
   def create
-    @image = Image.new(image_params)
+    create_image
 
     respond_to do |format|
       if @image.save
         format.html { redirect_to admin_product_images_url(@product), notice: 'Image was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @image }
+        format.json { redirect_to admin_product_image_url(@product, @image) }
       else
         format.html { render action: 'new' }
         format.json { render json: @image.errors, status: :unprocessable_entity }
@@ -84,5 +84,14 @@ class Backend::ImagesController < Backend::BaseController
     # Never trust parameters from the scary internet, only allow the white list through.
     def image_params
       params.require(:image).permit!
+    end
+
+    def create_image
+      @image =
+        if request.xhr?
+          @product.attachments.new({image: params["Filedata"]})
+        else
+          Image.new(image_params)
+        end
     end
 end
