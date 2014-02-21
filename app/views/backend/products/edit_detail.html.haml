@@ -7,7 +7,7 @@
         %section.panel.panel-default
           %header.panel-heading.font-bold Editing product
           .panel-body
-            = form_for([:admin, @product], html: { multipart: true }) do |f|
+            = form_for([:admin, @product]) do |f|
               = render 'application/error', model: @product
               %fieldset
                 %legend.wrapper-sm
@@ -22,7 +22,6 @@
 
               %footer.panel-footer.text-right.bg-light.lter
                 = link_to "Cancel", admin_products_path, class: 'btn btn-default'
-                = f.button :submit, class: 'btn btn-primary'
-
+                = f.button :submit, class: 'btn btn-primary', id: 'submit_prodcut_epiceditor'
       .col-lg-3
         = render "side_nav"

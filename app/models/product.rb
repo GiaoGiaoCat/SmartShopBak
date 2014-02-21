@@ -100,6 +100,14 @@ class Product < ActiveRecord::Base
     variants.any?
   end
 
+  def update_attrs(params)
+    if params.keys.include?("detail")
+      update_column(:detail, params["detail"])
+    else
+      update(params)
+    end
+  end
+
   # Master variant may be deleted (i.e. when the product is deleted)
   # which would make AR's default finder return nil.
   # This is a stopgap for that little problem.

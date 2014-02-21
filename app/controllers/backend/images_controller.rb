@@ -35,7 +35,7 @@ class Backend::ImagesController < Backend::BaseController
     respond_to do |format|
       if @image.save
         format.html { redirect_to admin_product_images_url(@product), notice: 'Image was successfully created.' }
-        format.json { redirect_to admin_product_image_url(@product, @image) }
+        format.json { render action: 'show', status: :created, location: admin_product_image_url(@product, @image) }
       else
         format.html { render action: 'new' }
         format.json { render json: @image.errors, status: :unprocessable_entity }
