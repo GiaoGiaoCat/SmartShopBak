@@ -19,9 +19,9 @@
                     .panel.panel-default
                       = render "details_editor_toolbar"
                       = render "details_editor_text_area", f: f
-                %footer.panel-footer.text-right.bg-light.lter
-                  = link_to "Cancel", admin_products_path, class: 'btn btn-default'
-                  = f.button :submit, class: 'btn btn-primary'
 
+              %footer.panel-footer.text-right.bg-light.lter
+                = link_to "Cancel", admin_products_path, class: 'btn btn-default'
+                = f.button :submit, class: 'btn btn-primary', id: 'submit_prodcut_epiceditor'
       .col-lg-3
         = render "side_nav"

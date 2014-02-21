@@ -1,1 +1,4 @@
-json.extract! @shop, :id, :name, :created_at, :updated_at
+json.image do
+  json.id @image.id
+  json.url @image.image.url
+end
