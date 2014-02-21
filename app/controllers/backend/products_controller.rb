@@ -1,5 +1,5 @@
 class Backend::ProductsController < Backend::BaseController
-  before_action :set_product, only: [:show, :edit, :edit_details, :update, :destroy, :restore, :product_properties]
+  before_action :set_product, only: [:show, :edit, :edit_detail, :update, :destroy, :restore, :product_properties]
 
   # GET /products
   # GET /products.json
@@ -37,7 +37,7 @@ class Backend::ProductsController < Backend::BaseController
   # PATCH/PUT /products/1.json
   def update
     respond_to do |format|
-      if @product.update(product_params)
+      if @product.update_attrs(product_params)
         format.html { redirect_to admin_products_url, notice: 'Product was successfully updated.' }
         format.json { head :no_content }
       else

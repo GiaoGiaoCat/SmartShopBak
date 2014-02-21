@@ -21,12 +21,21 @@ class Product < ActiveRecord::Base
     class_name: 'Variant',
     dependent: :destroy
 
-  has_many :variant_images, -> { order(:position) }, source: :images, through: :variants_including_master
+  has_many :variant_images,
+    -> { order(:position) },
+    source: :images,
+    through: :variants_including_master
 
   has_many :product_option_types, dependent: :destroy, inverse_of: :product
   has_many :option_types, through: :product_option_types
   has_many :product_properties, dependent: :destroy, inverse_of: :product
   has_many :properties, through: :product_properties
+
+  has_many :attachments,
+    -> { order(:position) },
+    as: :viewable,
+    dependent: :destroy
+
   # validations ...............................................................
   validates :name, presence: true
   validates :permalink, presence: true
@@ -65,6 +74,8 @@ class Product < ActiveRecord::Base
     reject_if: lambda { |pp| pp[:name].blank? }
 
   alias :options :product_option_types
+
+  accepts_nested_attributes_for :attachments
   # class methods .............................................................
   # public instance methods ...................................................
 
@@ -87,6 +98,14 @@ class Product < ActiveRecord::Base
   # the master variant is not a member of the variants array
   def has_variants?
     variants.any?
+  end
+
+  def update_attrs(params)
+    if params.keys.include?("detail")
+      update_column(:detail, params["detail"])
+    else
+      update(params)
+    end
   end
 
   # Master variant may be deleted (i.e. when the product is deleted)

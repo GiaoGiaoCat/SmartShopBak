@@ -12,7 +12,11 @@ class Variant < ActiveRecord::Base
     dependent: :destroy
 
   has_and_belongs_to_many :option_values
-  has_many :images, -> { order(:position) }, dependent: :destroy
+  has_many :images,
+    -> { order(:position) },
+    as: :viewable,
+    dependent: :destroy
+
   has_many :line_items
   has_many :assets, dependent: :destroy
   has_many :prices, dependent: :destroy, inverse_of: :variant
