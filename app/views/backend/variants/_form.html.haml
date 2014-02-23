@@ -1,7 +1,6 @@
 = simple_form_for([:admin, @product, @variant], multipart: true) do |f|
   = f.error_notification
   .form-inputs
-    / = f.association :product
     - @product.option_types.each do |option_type|
       .form-group
         %label.col-sm-2.control-label
@@ -12,13 +11,12 @@
     = f.input :sku
     .line.line-dashed.line-lg.pull-in
     - if @variant.new_record?
-      = f.input :variant_price, label: "Price"
+      = f.input :variant_price, input_html: { value: @variant.price }, label: "Price"
     - else
       = f.input :price
     .line.line-dashed.line-lg.pull-in
     = f.input :position
     .line.line-dashed.line-lg.pull-in
-  / = render :partial => "assets", :locals => { :f => f }
   .form-group
     .col-sm-4.col-sm-offset-2
       = link_to "Cancel", admin_product_variants_path(@product), class: 'btn btn-default'

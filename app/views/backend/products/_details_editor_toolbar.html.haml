@@ -1,0 +1,13 @@
+%header.panel-heading.pos-rlt
+  %ul.nav.nav-tabs
+    %li.active
+      = link_to("#text-area", data: { toggle: 'tab' }, id: 'editor-edit-btn') do
+        = content_tag(:i, nil, class: 'fa fa-pencil') + ' Edit'
+    %li
+      = link_to("#preview-area", data: { toggle: 'tab' }, id: 'editor-preview-btn') do
+        = content_tag(:i, nil, class: 'fa fa-eye') + ' Preview'
+  = link_to("#", id: "detail_add_image", class: "detail-add-image pos-abt", data: { product: @product.id }) do
+    = content_tag(:i, nil, class: 'fa fa-picture-o') + ' Upload Image'
+  %span#uploading_image.pos-abt
+    = image_tag("preloaders.gif")
+  = file_field_tag :file, id: 'product_upload_images', class: 'hide'

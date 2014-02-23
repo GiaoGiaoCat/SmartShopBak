@@ -1,0 +1,6 @@
+.panel-body
+  #epiceditor.tab-content
+    #text-area.tab-pane.active
+      = text_area_tag 'epiceditor_content', class: 'form-control', rows: 18
+    #preview-area.tab-pane
+  = f.text_area :detail, class: 'form-control', class: 'hidden'

@@ -12,7 +12,11 @@ class Variant < ActiveRecord::Base
     dependent: :destroy
 
   has_and_belongs_to_many :option_values
-  has_many :images, -> { order(:position) }, dependent: :destroy
+  has_many :images,
+    -> { order(:position) },
+    as: :viewable,
+    dependent: :destroy
+
   has_many :line_items
   has_many :assets, dependent: :destroy
   has_many :prices, dependent: :destroy, inverse_of: :variant
@@ -25,15 +29,13 @@ class Variant < ActiveRecord::Base
   # HACK:
   # 在创建和添加时候使用不同的 price 字段是权益之计，这里需要重构。
   validates :variant_price,
-    numericality: { greater_than_or_equal_to: 0 },
-    presence: true,
+    numericality: { greater_than_or_equal_to: 0, allow_nil: true },
     on: :create
   validates :price,
       numericality: { greater_than_or_equal_to: 0 },
       presence: true,
       on: :update
   # callbacks .................................................................
-  # v1 版本不需要进价
   before_validation :set_cost_currency
   after_create :set_default_price
   after_create :set_position
@@ -51,8 +53,6 @@ class Variant < ActiveRecord::Base
            :shipping_category, to: :product
 
   delegate :price, :price=, :currency, to: :default_price
-
-  accepts_nested_attributes_for :assets, allow_destroy: true
   # class methods .............................................................
   # public instance methods ...................................................
   # HACK:

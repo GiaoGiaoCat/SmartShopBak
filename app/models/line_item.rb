@@ -24,7 +24,14 @@ class LineItem < ActiveRecord::Base
   # class methods .............................................................
   # public instance methods ...................................................
   def copy_price
-    # self.price = variant.price if variant && price.nil?
+    if variant
+      self.price = variant.price if price.nil?
+      # TODO
+      # 因为v1版本没有进价，暂时使用销售价
+      # self.cost_price = variant.cost_price if cost_price.nil?
+      self.cost_price = variant.price if cost_price.nil?
+      self.currency = variant.currency if currency.nil?
+    end
   end
 
   def amount
