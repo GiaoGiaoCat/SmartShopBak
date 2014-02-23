@@ -1,0 +1,22 @@
+!!!
+%html(lang="en")
+  %head
+    %meta(charset="utf-8")
+    %meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    %meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1")
+    %title SmartShop
+    = stylesheet_link_tag "frontend", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "frontend", "data-turbolinks-track" => true
+    = csrf_meta_tags
+
+  %body
+    %section.vbox
+      = render "frontend/application/header"
+      %section
+        %section.hbox.stretch
+          = render "frontend/application/navigation"
+          %section#content
+            = yield
+            = link_to '', "#", class: 'hide nav-off-screen-block', data: { target: '#nav' }
+          %aside.bg-light.lter.b-l.aside-md.hide#notes
+            .wrapper Notification

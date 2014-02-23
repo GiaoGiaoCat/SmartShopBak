@@ -4,10 +4,10 @@
 
 你可以自由的更改代码本地跑着玩，但因为所使用的 theme 是购买的，如果部署供人使用你可能会因为这个问题侵权哦。
 
-## Ruby version
+## Ruby and Rails version
 
-* ruby >= 2.0.0-p0
-* rails >= 4.0.2
+* ruby >= 2.1.0
+* rails >= 4.1.0.beta1
 
 ## System dependencies
 
