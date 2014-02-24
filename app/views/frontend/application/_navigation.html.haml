@@ -1,0 +1,35 @@
+%aside#nav.bg-light.lter.b-r.aside-md
+  %section.vbox
+    %section.w-f.scrollable
+      %nav.nav-primary.pushy
+        %ul.nav
+          %li
+            = link_to admin_root_path do
+              = content_tag(:i, class: 'fa fa-dashboard icon') do
+                = content_tag(:b, nil, class: 'bg-danger')
+              = content_tag(:span, 'Dashboard')
+
+          %li
+            = link_to admin_shops_path do
+              = content_tag(:i, class: 'fa fa-envelope-o icon') do
+                = content_tag(:b, nil, class: 'bg-primary dker')
+              = content_tag(:span, 'Shop')
+
+          %li{ class: active_rules(["products", "option_types", "properties", "prototypes"]) }
+            = link_to 'javascript:void(0)' do
+              = content_tag(:i, class: 'fa fa-envelope-o icon') do
+                = content_tag(:b, nil, class: 'bg-primary dker')
+              = content_tag(:span, 'Product')
+            %ul.nav.lt
+              %li= navigation_link('Product', admin_products_path)
+              %li= navigation_link('Option Type', admin_option_types_url)
+              %li= navigation_link('Property', admin_properties_path)
+              %li= navigation_link('Prototype', admin_prototypes_path)
+
+          %li{ class: active_rules(["orders"]) }
+            = link_to admin_orders_path do
+              - if Order.working.count > 0
+                = content_tag(:b, Order.working.count, class: 'badge bg-danger pull-right')
+              = content_tag(:i, class: 'fa fa-envelope-o icon') do
+                = content_tag(:b, nil, class: 'bg-primary dker')
+              = content_tag(:span, 'Orders')

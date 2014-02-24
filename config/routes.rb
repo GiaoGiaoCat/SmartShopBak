@@ -1,7 +1,12 @@
 SmartShop::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
-  root 'site#index'
+  root 'frontend/products#index'
+
+  namespace :frontend do
+    root 'products#index'
+    resources :products
+  end
 
   namespace :admin, module: "backend" do
     root 'dashboard#index'

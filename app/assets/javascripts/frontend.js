@@ -23,20 +23,10 @@
 
 // Important plugins put in all pages
 //= require slimscroll/jquery.slimscroll.min
-//= require fuelux/fuelux.js
-//= require datepicker/bootstrap-datepicker
-//= require slider/bootstrap-slider.js
-//= require file-input/bootstrap-filestyle.min
-//= require libs/moment.min
-//= require combodate/combodate
-//= require select2/select2.min
-//= require markdown/epiceditor.min
-//= require jquery-fileupload/jquery.html5-fileupload
+//= require pushy/pushy
 
-// Dynamic nested form plugins
-//= require cocoon
+// require_tree .
 
-//= require_tree .
 //= require turbolinks
 
 $(document).on('page:fetch', function() {
