@@ -11,12 +11,11 @@
 
   %body
     %section.vbox
-      = render "frontend/application/header"
-      %section
-        %section.hbox.stretch
-          = render "frontend/application/navigation"
-          %section#content
-            = yield
-            = link_to '', "#", class: 'hide nav-off-screen-block', data: { target: '#nav' }
-          %aside.bg-light.lter.b-l.aside-md.hide#notes
-            .wrapper Notification
+      = render "frontend/application/navigation"
+      %section#container.pos-rlt
+        = render "frontend/application/header"
+        %section
+          %section.hbox.stretch
+            %section#content
+              = yield
+              111

@@ -1,97 +1,35 @@
-%aside#nav.bg-light.lter.b-r.aside-md.hidden-print
+%aside#nav.bg-light.lter.b-r.aside-md
   %section.vbox
-    - if Rails.env.development?
-      %header.header.bg-primary.lter.text-center.clearfix
-        .btn-group
-          = button_tag(type: 'button', class: 'btn btn-sm btn-dark btn-icon', title: 'New project') do
-            = content_tag(:i, nil, class: 'fa fa-plus')
-          .btn-group.hidden-nav-xs
-            = button_tag(type: 'button', class: 'btn btn-sm btn-primary dropdown-toggle', data: { toggle: 'dropdown' }) do
-              Switch Project
-              = content_tag(:span, nil, class: 'caret')
-            %ul.dropdown-menu.text-left
-              %li= link_to 'Project', '#'
-              %li= link_to 'Another Project', '#'
-              %li= link_to 'More Project', '#'
     %section.w-f.scrollable
-      .slim-scroll{ data: { height: 'auto', "disable-fade-out" => 'true', distance: '0', size: '5px', color: '#333333'} }
-        %nav.nav-primary.hidden-xs
-          %ul.nav
-            %li
-              = link_to admin_root_path do
-                = content_tag(:i, class: 'fa fa-dashboard icon') do
-                  = content_tag(:b, nil, class: 'bg-danger')
-                = content_tag(:span, 'Dashboard')
+      %nav.nav-primary.pushy
+        %ul.nav
+          %li
+            = link_to admin_root_path do
+              = content_tag(:i, class: 'fa fa-dashboard icon') do
+                = content_tag(:b, nil, class: 'bg-danger')
+              = content_tag(:span, 'Dashboard')
 
-            %li
-              = link_to admin_shops_path do
-                = content_tag(:i, class: 'fa fa-envelope-o icon') do
-                  = content_tag(:b, nil, class: 'bg-primary dker')
-                = content_tag(:span, 'Shop')
+          %li
+            = link_to admin_shops_path do
+              = content_tag(:i, class: 'fa fa-envelope-o icon') do
+                = content_tag(:b, nil, class: 'bg-primary dker')
+              = content_tag(:span, 'Shop')
 
-            %li{ class: active_rules(["products", "option_types", "properties", "prototypes"]) }
-              = link_to 'javascript:void(0)' do
-                = content_tag(:i, class: 'fa fa-envelope-o icon') do
-                  = content_tag(:b, nil, class: 'bg-primary dker')
-                = content_tag(:span, 'Product')
-              %ul.nav.lt
-                %li= navigation_link('Product', admin_products_path)
-                %li= navigation_link('Option Type', admin_option_types_url)
-                %li= navigation_link('Property', admin_properties_path)
-                %li= navigation_link('Prototype', admin_prototypes_path)
+          %li{ class: active_rules(["products", "option_types", "properties", "prototypes"]) }
+            = link_to 'javascript:void(0)' do
+              = content_tag(:i, class: 'fa fa-envelope-o icon') do
+                = content_tag(:b, nil, class: 'bg-primary dker')
+              = content_tag(:span, 'Product')
+            %ul.nav.lt
+              %li= navigation_link('Product', admin_products_path)
+              %li= navigation_link('Option Type', admin_option_types_url)
+              %li= navigation_link('Property', admin_properties_path)
+              %li= navigation_link('Prototype', admin_prototypes_path)
 
-            %li{ class: active_rules(["orders"]) }
-              = link_to admin_orders_path do
-                - if Order.working.count > 0
-                  = content_tag(:b, Order.working.count, class: 'badge bg-danger pull-right')
-                = content_tag(:i, class: 'fa fa-envelope-o icon') do
-                  = content_tag(:b, nil, class: 'bg-primary dker')
-                = content_tag(:span, 'Orders')
-
-            - if Rails.env.development?
-              %li
-                = link_to '#' do
-                  = content_tag(:i, class: 'fa fa-file-text icon') do
-                    = content_tag(:b, nil, class: 'bg-primary')
-                  = content_tag(:span, class: 'pull-right') do
-                    = content_tag(:i, nil, class: 'fa fa-angle-down text')
-                    = content_tag(:i, nil, class: 'fa fa-angle-up text-active')
-                  = content_tag(:span, '测试')
-                %ul.nav.lt
-                  %li= navigation_link('Address', admin_addresses_path)
-
-                  %li= navigation_link('Payment', admin_payments_path)
-
-                  %li= navigation_link('Product Trash', trash_admin_products_path)
-                  %li= navigation_link('Shipping Method', admin_shipping_methods_path)
-                  %li= navigation_link('Shipping Category', admin_shipping_categories_path)
-                  %li= navigation_link('Shipment', admin_shipments_path)
-    - if Rails.env.development?
-      %footer.footer.lt.hidden-xs.b-t.b-light
-        #chat.dropup
-          %section.dropdown-menu.on.aside-md.m-l-n
-            %section.panel.bg-white
-              %header.panel-heading.b-b.b-light Active chats
-              .panel-body.animated.fadeInRight
-                %p.text-sm No active chats.
-                %p= link_to 'Start a chat', '#', class: 'btn btn-sm btn-default'
-        #invite.dropup
-          %section.dropdown-menu.on.aside-md.m-l-n
-            %section.panel.bg-white
-              %header.panel-heading.b-b.b-light
-                John
-                = content_tag(:i, nil, class: 'fa fa-circle text-success')
-              .panel-body.animated.fadeInRight
-                %p.text-sm No contacts in your lists.
-                %p
-                  = link_to '#', class: 'btn btn-sm btn-facebook' do
-                    = content_tag(:i, nil, class: 'fa fa-fw fa-facebook')
-                    Invite from Facebook
-        = link_to '#nav', class: 'pull-right btn btn-sm btn-default btn-icon', data: { toggle: 'class::nav-xs' } do
-          = content_tag(:i, nil, class: 'fa fa-angle-left text')
-          = content_tag(:i, nil, class: 'fa fa-angle-right text-active')
-        .btn-group.hidden-nav-xs
-          = button_tag(type: 'button', title: 'Chats', class: 'btn btn-icon btn-sm btn-default', data: { toggle: 'dropdown', target: '#chat' }) do
-            = content_tag(:i, nil, class: 'fa fa-comment-o')
-          = button_tag(type: 'button', title: 'Contacts', class: 'btn btn-icon btn-sm btn-default', data: { toggle: 'dropdown', target: '#invite' }) do
-            = content_tag(:i, nil, class: 'fa fa-facebook-square')
+          %li{ class: active_rules(["orders"]) }
+            = link_to admin_orders_path do
+              - if Order.working.count > 0
+                = content_tag(:b, Order.working.count, class: 'badge bg-danger pull-right')
+              = content_tag(:i, class: 'fa fa-envelope-o icon') do
+                = content_tag(:b, nil, class: 'bg-primary dker')
+              = content_tag(:span, 'Orders')

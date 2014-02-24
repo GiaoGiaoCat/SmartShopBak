@@ -23,6 +23,7 @@
 
 // Important plugins put in all pages
 //= require slimscroll/jquery.slimscroll.min
+//= require pushy/pushy
 
 // require_tree .
 

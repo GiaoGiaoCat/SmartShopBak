@@ -1,4 +1,4 @@
-%header.bg-dark.dk.header.navbar.navbar-fixed-top-xs
+%header.bg-dark.dk.header.navbar
   .navbar-header.aside-md
     = link_to "#", class: 'btn btn-link visible-xs', data: { toggle: "dropdown", target: ".nav-user" } do
       = content_tag(:i, nil, class: 'fa fa-cog')
@@ -6,24 +6,5 @@
     = link_to "#", class: 'navbar-brand', data: { toggle: "fullscreen" } do
       = image_tag("logo.png", class: 'm-r-sm') + "SmartShop"
 
-    = link_to "javascript:void(0)", class: 'btn btn-link visible-xs', data: { toggle: "class:nav-off-screen,open", target: "#nav,html"} do
+    = link_to "javascript:void(0)", class: 'btn btn-link visible-xs menu-btn' do
       = content_tag(:i, nil, class: 'fa fa-bars')
-
-  %ul.nav.navbar-nav.navbar-right.hidden-xs.nav-user
-    %li.dropdown
-      = link_to '#', class: 'dropdown-toggle', data: { toggle: 'dropdown' } do
-        = content_tag(:span, class: 'thumb-sm avatar pull-left') do
-          = image_tag "avatar.jpg", class: "img-circle"
-        Delia Chen
-        = content_tag(:b, nil, class: 'caret')
-      %ul.dropdown-menu.animated.fadeInRight
-        %span.arrow.top
-        %li= link_to 'Settings', '#'
-        %li= link_to 'Profile', '#'
-        %li
-          = link_to '#' do
-            = content_tag(:span, 3, class: 'badge bg-danger pull-right')
-            Notifications
-        %li= link_to 'Help', '#'
-        %li.divider
-        %li= link_to 'Logout', '#', data: { toggle: 'ajaxModal' }
