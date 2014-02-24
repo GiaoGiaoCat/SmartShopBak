@@ -2,14 +2,14 @@
 %html(lang="en" class="app")
   %head
     %meta(charset="utf-8")
-    %title SmartShop
     %meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1")
-    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    %title SmartShop
+    = stylesheet_link_tag "backend", media: "all", "data-turbolinks-track" => true
     /[if lt IE 9]
       = javascript_include_tag "ie/html5shiv.js"
       = javascript_include_tag "ie/respond.min.js"
       = javascript_include_tag "ie/excanvas.js"
-    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = javascript_include_tag "backend", "data-turbolinks-track" => true
     = csrf_meta_tags
 
   %body
