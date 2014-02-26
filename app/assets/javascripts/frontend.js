@@ -24,8 +24,10 @@
 // Important plugins put in all pages
 //= require slimscroll/jquery.slimscroll.min
 //= require pushy/pushy
+//= require jquery-ias/jquery-ias.min
 
-// require_tree .
+// Custom javascript
+//= require frontend/products
 
 //= require turbolinks
 
