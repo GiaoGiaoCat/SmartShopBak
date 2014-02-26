@@ -20,16 +20,17 @@ ShippingMethodCategory.create(shipping_method_id: 1, shipping_category_id: 1)
 ShippingMethodCategory.create(shipping_method_id: 1, shipping_category_id: 2)
 ShippingMethodCategory.create(shipping_method_id: 2, shipping_category_id: 1)
 
-# Product.create(name: "外套", shipping_category_id: 1)
+30.times do |i|
+  Product.create(
+    name: "product_n_#{i}",
+    shipping_category_id: 1,
+    available_on: '2014-02-23',
+    permalink: "product_n_#{i}",
+    master_sku: "SK_#{i}",
+    master_price: 200
+  )
+end
 # Product.create(name: "裤子", shipping_category_id: 2)
-
-# 2.times do
-#   Variant.create(sku: rand(10000), price: rand(100), product_id: 1)
-# end
-
-# 2.times do
-#   Variant.create(sku: rand(10000), price: rand(100), product_id: 2)
-# end
 
 # Address.create(name: '老李', phone: '13244556677', address: '长春一汽')
 # Address.create(name: '小王', phone: '13244558888', address: '长白山')

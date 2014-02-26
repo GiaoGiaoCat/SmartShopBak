@@ -1,3 +1,33 @@
 // Place all the styles related to the frontend::products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.wrapper-s {
+  padding: 5px;
+}
+
+.product-list > .product-item a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.product-list > .product-item > .thumb-sm {
+  width: 100%;
+}
+
+.product-list > .product-item .image-item {
+  width: 35%;
+}
+
+.product-list > .product-item strong {
+  font-size: 1.2em;
+}
+
+.product-list > .product-item .price {
+  font-size: 1.2em;
+}
+
+.product-list > .product-item .price small {
+  font-size: .8em;
+}
