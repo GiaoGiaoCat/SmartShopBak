@@ -1,2 +1,6 @@
-%h1 Frontend::Products#index
-%p Find me in app/views/frontend/products/index.html.haml
+%section
+  %ul.list-group.no-radius.m-b-none.m-t-n-xxs.no-border.product-list
+    = render :partial => "product", :collection => @products
+  %footer.panel-footer
+    = paginate @products
+    .loading-indicator.text-center-xs= image_tag "preloaders.gif"

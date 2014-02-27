@@ -20,9 +20,9 @@
 
  *= require app
 
- *= require_self
+ *= require frontend/products
 
- * require_tree .
+ *= require_self
  */
 
 
@@ -57,4 +57,7 @@
   width: 48px;
   float: left;
   margin-right: 10px;
+}
+.nav-primary li > a > i > b {
+  left: -42px;
 }
