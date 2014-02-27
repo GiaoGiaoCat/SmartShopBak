@@ -4,10 +4,14 @@
 
 $ ->
   if $(".product-list").length > 0
-    ias = jQuery.ias
+    ias = $.ias
       container : '.product-list'
       item: '.product-item'
       pagination: '#content .pagination'
       next: '.next a'
       negativeMargin: 100
-      triggerPageThreshold: 2
+
+    # FIXME [issue #58]
+    # ias.extension new IASSpinnerExtension()
+    # ias.extension(new IASNoneLeftExtension({html: '<li style="text-align:center"><p><em>You reached the end!</em></p></li>'}))
+    # return
