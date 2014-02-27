@@ -36,7 +36,13 @@
 // Dynamic nested form plugins
 //= require cocoon
 
-//= require_tree .
+// require_tree .
+
+//= require backend/images
+//= require backend/orders
+//= require backend/products
+//= require backend/prototypes
+
 //= require turbolinks
 
 $(document).on('page:fetch', function() {

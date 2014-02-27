@@ -1,0 +1,10 @@
+%header.bg-dark.dk.header.navbar
+  .navbar-header.aside-md
+    = link_to "#", class: 'btn btn-link visible-xs', data: { toggle: "dropdown", target: ".nav-user" } do
+      = content_tag(:i, nil, class: 'fa fa-cog')
+
+    = link_to "#", class: 'navbar-brand', data: { toggle: "fullscreen" } do
+      = image_tag("logo.png", class: 'm-r-sm') + "SmartShop"
+
+    = link_to "javascript:void(0)", class: 'btn btn-link visible-xs menu-btn' do
+      = content_tag(:i, nil, class: 'fa fa-bars')

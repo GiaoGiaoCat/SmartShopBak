@@ -1,0 +1,13 @@
+%li.list-group-item.wrapper-s.product-item
+  = link_to frontend_product_path(product), class: 'thumb-sm clear' do
+    .image-item.pull-left.m-r-xs
+      = thumb_image(product)
+    .clear
+      %strong.block= product.name
+      %span.block.price.text-danger.font-bold.m-sm.m-l-none.m-r-none
+        = number_to_money(product.price, :cn)
+        %small.font-normal.text-muted.text-lt= number_to_money(product.price * 1.5, :cn)
+      %span.block.m-t-sm.m-l-none.m-r-none
+        %span.badge.bg-warning 货到付款
+
+

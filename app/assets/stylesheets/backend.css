@@ -25,7 +25,8 @@
 
  *= require app
 
- *= require_tree .
+ *= require backend/products
+ * require_tree .
  */
 
 
