@@ -1,7 +1,7 @@
 !function ($) {
 
   $(function(){
-
+ 	
 	// sparkline
 	var sr, sparkline = function($re){
 		$(".sparkline").each(function(){
@@ -22,9 +22,9 @@
 
 	// easypie
     $('.easypiechart').each(function(){
-    	var $this = $(this),
-    	$data = $this.data(),
-    	$step = $this.find('.step'),
+    	var $this = $(this), 
+    	$data = $this.data(), 
+    	$step = $this.find('.step'), 
     	$target_value = parseInt($($data.target).text()),
     	$value = 0;
     	$data.barColor || ( $data.barColor = function($percent) {
@@ -46,7 +46,7 @@
 	});
 
   	// combodate
-	$(".combodate").each(function(){
+	$(".combodate").each(function(){ 
 		$(this).combodate();
 		$(this).next('.combodate').find('select').addClass('form-control');
 	});
@@ -151,6 +151,10 @@
 			clearTimeout($slimResize);
 			$slimResize = setTimeout(function(){$self.slimScroll($data);}, 500);
 		});
+
+    $(document).on('updateNav', function(){
+      $self.slimScroll($data);
+    });
 	});
 
 	// pjax
@@ -212,7 +216,7 @@
 			}
 		);
 	});
-
+	
 	// add notes
 	function addMsg($msg){
 		var $el = $('.nav-user'), $n = $('.count:first', $el), $v = parseInt($n.text());
@@ -227,7 +231,7 @@
                     'Sophi sent you a email<br>'+
                     '<small class="text-muted">1 minutes ago</small>'+
                   '</span>'+
-                '</a>';
+                '</a>';	
     setTimeout(function(){addMsg($msg);}, 1500);
 
 	// datatable
@@ -247,7 +251,7 @@
 		} );
 	});
 
-	// select2
+	// select2 
  	if ($.fn.select2) {
       $("#select2-option").select2();
       $("#select2-tags").select2({
