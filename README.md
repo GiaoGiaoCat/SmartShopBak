@@ -6,25 +6,17 @@
 
 ## Ruby and Rails version
 
-* ruby >= 2.1.0
-* rails >= 4.1.0.beta1
+* ruby >= 2.1.1
+* rails >= 4.1.0.rc1
 
 ## System dependencies
 
 ## 关键文件配置
 
 ```ruby
-touch config/initializers/secrets.yml
+touch config/secrets.yml
 rake secret
 then config your `secret_key_base`
-```
-
-因为 rails 4.1 仍在 beta 版本，所以你还需要添加如下文件
-
-```ruby
-touch config/initializers/secret_token.rb
-rake secret
-SmartShop::Application.config.secret_key_base = 'YOUR KEY'
 ```
 
 ## 数据库创建和初始化
