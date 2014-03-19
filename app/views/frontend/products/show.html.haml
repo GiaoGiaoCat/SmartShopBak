@@ -1,1 +1,7 @@
-edit frontend/products/show.html.haml
+= content_for(:back_botton) do
+  = link_to frontend_products_path, class: 'btn btn-link visible-xs' do
+    = content_tag(:i, nil, class: 'fa fa-chevron-left')
+= thumb_image(product)
+= @product.name
+= number_to_money(@product.price, :cn)
+= number_to_money(@product.price * 1.5, :cn)
