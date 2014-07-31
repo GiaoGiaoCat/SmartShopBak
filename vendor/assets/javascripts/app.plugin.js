@@ -114,29 +114,16 @@
 	});
 
 	// wizard
-	var $nextText;
-	$(document).on('click', '[data-wizard]', function (e) {
-		var $this   = $(this), href;
-	    var $target = $($this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, ''));
-	    var option = $this.data('wizard');
-	    var item = $target.wizard('selectedItem');
-	    var $step = $target.next().find('.step-pane:eq(' + (item.step-1) + ')');
-	    !$nextText && ($nextText = $('[data-wizard="next"]').html());
-	    var validated = false;
-	    $('[data-required="true"]', $step).each(function(){
-	    	return (validated = $(this).parsley( 'validate' ));
-	    });
-	    if($(this).hasClass('btn-next') && !validated){
-	    	return false;
-	    }else{
-	    	$target.wizard(option);
-	    	var activeStep = (option=="next") ? (item.step+1) : (item.step-1);
-	    	var prev = ($(this).hasClass('btn-prev') && $(this)) || $(this).prev();
-	    	var next = ($(this).hasClass('btn-next') && $(this)) || $(this).next();
-	    	prev.attr('disabled', (activeStep == 1) ? true : false);
-	    	next.html((activeStep < $target.find('li').length) ? $nextText : next.data('last'));
-	    }
-	});
+  $(document).on('change', '.wizard', function (e, data) {
+    if(data.direction !== 'next' ) return;
+    var item = $(this).wizard('selectedItem');
+    var $step = $(this).find('.step-pane:eq(' + (item.step-1) + ')');
+    var validated = true;
+    $('[data-required="true"]', $step).each(function(){
+      return (validated = $(this).parsley( 'validate' ));
+    });
+    if(!validated) return e.preventDefault();
+  });
 
 	// sortable
 	if ($.fn.sortable) {
@@ -232,24 +219,7 @@
                     '<small class="text-muted">1 minutes ago</small>'+
                   '</span>'+
                 '</a>';	
-    setTimeout(function(){addMsg($msg);}, 1500);
-
-	// datatable
-	$('[data-ride="datatables"]').each(function() {
-		var oTable = $(this).dataTable( {
-			"bProcessing": true,
-			"sAjaxSource": "js/data/datatable.json",
-			"sDom": "<'row'<'col-sm-6'l><'col-sm-6'f>r>t<'row'<'col-sm-6'i><'col-sm-6'p>>",
-			"sPaginationType": "full_numbers",
-			"aoColumns": [
-				{ "mData": "engine" },
-				{ "mData": "browser" },
-				{ "mData": "platform" },
-				{ "mData": "version" },
-				{ "mData": "grade" }
-			]
-		} );
-	});
+  setTimeout(function(){addMsg($msg);}, 1500);
 
 	// select2 
  	if ($.fn.select2) {

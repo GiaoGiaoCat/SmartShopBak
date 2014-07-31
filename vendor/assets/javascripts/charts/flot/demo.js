@@ -100,12 +100,10 @@ $(function(){
         },
         colors: ["#dddddd","#89cb4e"],
         xaxis: {
-            ticks: 15,
-            tickDecimals: 0
+            show: false
         },
         yaxis: {
-            ticks: 10,
-            tickDecimals: 0
+            ticks: 5
         },
         tooltip: true,
         tooltipOpts: {

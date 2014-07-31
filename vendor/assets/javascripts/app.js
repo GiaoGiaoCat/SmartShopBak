@@ -13,6 +13,7 @@ Modernizr.addTest('ie',function(){return!!navigator.userAgent.match(/MSIE/i)});
 Modernizr.addTest('ie10',function(){return!!navigator.userAgent.match(/MSIE 10/i)});
 Modernizr.addTest('ie11',function(){return!!navigator.userAgent.match(/Trident.*rv:11\./)});
 Modernizr.addTest('ios',function(){return!!navigator.userAgent.match(/iPhone|iPad|iPod/i)});
+Modernizr.addTest('ios7 ipad',function(){return!!navigator.userAgent.match(/iPad;.*CPU.*OS 7_\d/i)});
 /*!
 * screenfull
 * v1.0.4 - 2013-05-26
@@ -172,13 +173,7 @@ Date.now = Date.now || function() { return +new Date; };
   	    $this.is('i') && ($this = $this.parent());
   	    $this.button('loading');
   	});
-
-    var scrollToTop = function(){
-  		!location.hash && setTimeout(function () {
-  		    if (!pageYOffset) window.scrollTo(0, 0);
-  		}, 1000);
-  	};
-  	
+ 	
     var $window = $(window);
     // mobile
   	var mobile = function(option){
@@ -186,21 +181,31 @@ Date.now = Date.now || function() { return +new Date; };
   			$('[data-toggle^="shift"]').shift('reset');
   			return true;
   		}
-  		scrollToTop();
   		$('[data-toggle^="shift"]').shift('init');
       return true;
   	};
   	// unmobile
   	$window.width() < 768 && mobile();
     // resize
-    var $resize;
+    var $resize, $width = $window.width();
   	$window.resize(function() {
-      clearTimeout($resize);
-      $resize = setTimeout(function(){
-        $window.width() < 767 && mobile();
-        $window.width() >= 768 && mobile('reset') && fixVbox();
-      }, 500);
+      if($width !== $window.width()){
+        clearTimeout($resize);
+        $resize = setTimeout(function(){
+          setHeight();
+          $window.width() < 767 && mobile();
+          $window.width() >= 768 && mobile('reset') && fixVbox();
+          $width = $window.width();
+        }, 500);
+      }
   	});
+
+    // fluid layout
+    var setHeight = function(){
+      $('.app-fluid #nav > *').css('min-height', $(window).height());
+      return true;
+    }
+    setHeight();
     
     // fix vbox
     var fixVbox = function(){

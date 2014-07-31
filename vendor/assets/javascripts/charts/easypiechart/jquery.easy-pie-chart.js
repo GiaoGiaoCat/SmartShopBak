@@ -98,6 +98,12 @@ Thanks to Philip Thrasher for the jquery plugin boilerplate for coffee script
       _this.ctx.arc(0, 0, offset, 0, Math.PI * 2, true);
       _this.ctx.closePath();
       _this.ctx.strokeStyle = _this.options.trackColor;
+      
+      if (_this.options.color) {
+        _this.ctx.fillStyle = _this.options.color;
+        _this.ctx.fill();
+      }
+
       _this.ctx.lineWidth = _this.options.lineWidth;
       _this.ctx.stroke();
     };
