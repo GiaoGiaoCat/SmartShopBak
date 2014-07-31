@@ -7,7 +7,7 @@
 ## Ruby and Rails version
 
 * ruby >= 2.1.1
-* rails >= 4.1.0.rc1
+* rails >= 4.1.4
 
 ## System dependencies
 

@@ -6,21 +6,18 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Shop.create(name: "测试商铺")
-
-ShippingMethod.create(name: "EMS")
-ShippingMethod.create(name: "圆通")
+Shop.create( name: "都可茶饮" )
 
 PaymentMethod.create(name: "Alipay")
+PaymentMethod.create(name: "Baifubao")
 
 ShippingCategory.create(name: "货到付款")
-ShippingCategory.create(name: "先付款")
+ShippingCategory.create(name: "在线付款")
 
-ShippingMethodCategory.create(shipping_method_id: 1, shipping_category_id: 1)
-ShippingMethodCategory.create(shipping_method_id: 1, shipping_category_id: 2)
-ShippingMethodCategory.create(shipping_method_id: 2, shipping_category_id: 1)
+ShippingMethod.create(name: "顺丰", display_on: "both", shipping_category_ids: [1, 2])
+ShippingMethod.create(name: "圆通", display_on: "both", shipping_category_ids: [1, 2])
 
-30.times do |i|
+20.times do |i|
   Product.create(
     name: "product_n_#{i}",
     shipping_category_id: 1,
@@ -30,6 +27,7 @@ ShippingMethodCategory.create(shipping_method_id: 2, shipping_category_id: 1)
     master_price: 200
   )
 end
+
 # Product.create(name: "裤子", shipping_category_id: 2)
 
 # Address.create(name: '老李', phone: '13244556677', address: '长春一汽')

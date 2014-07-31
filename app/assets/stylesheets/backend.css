@@ -21,7 +21,7 @@
  *= require select2/theme
  *= require fuelux/fuelux
  *= require datepicker/datepicker
- *= require slider/slider
+ *= require slider/slider.css
 
  *= require app
 

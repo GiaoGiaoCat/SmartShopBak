@@ -120,7 +120,7 @@ ActiveRecord::Schema.define(version: 20140106094918) do
   end
 
   create_table "payments", force: true do |t|
-    t.decimal  "amount"
+    t.decimal  "amount",               precision: 8, scale: 2
     t.integer  "order_id"
     t.integer  "source_id"
     t.string   "source_type"

@@ -13,7 +13,7 @@
 
 // Core javascripts do not remove
 //= require jquery
-//= require jquery.turbolinks
+// require jquery.turbolinks
 //= require jquery_ujs
 //= require bootstrap
 
@@ -43,7 +43,7 @@
 //= require backend/products
 //= require backend/prototypes
 
-//= require turbolinks
+// require turbolinks
 
 $(document).on('page:fetch', function() {
   $(".loading-indicator").show();

@@ -42,9 +42,12 @@
 .dataTables_wrapper select {
   width: 75px;
 }
-.dataTables_wrapper input {
-  width: 200px;
+
+.dataTables_wrapper input[type="checkbox"],
+.dataTables_wrapper input[type="radio"]{
+  height: auto;
 }
+
 .dataTables_filter,
 .dataTables_paginate {
   float: right;
