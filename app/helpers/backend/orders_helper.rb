@@ -43,8 +43,8 @@ module Backend::OrdersHelper
       Order::ALL_STATES.each do |state|
         class_name = 'btn btn-sm btn-default'
         class_name += ' active' if state_name == state.to_s
-        puts "state_name is #{state_name}"
-        puts "state is #{state}"
+        # puts "state_name is #{state_name}"
+        # puts "state is #{state}"
         concat link_to(
           state.to_s.titleize,
           admin_orders_path(state: state),
